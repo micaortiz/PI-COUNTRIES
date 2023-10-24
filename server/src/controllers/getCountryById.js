@@ -7,17 +7,18 @@ const { Country, Activity } = require('../db.js')
 
 const getCountryById = async (req, res) =>{
     try {
-        const { idPais } = req.params
+        const { id } = req.params
         
         // const country = await Country.findOne({
         //     where: { idPais: idPais },
-        //     //  incluye las act asociadas al pais filtrado
+        
+            //  incluye las act asociadas al pais filtrado
         //     include: Activity,
         //   });
 
         //? VER CUAL FUNCIONA MEJOR ENTRE ESAS 2 
 
-        const country = await Country.findByPk( idPais.toUpperCase(),{
+        const country = await Country.findByPk( id.toUpperCase(),{
             // incluye las act asociadas al pais filtrado
             include: {model: Activity},
           });

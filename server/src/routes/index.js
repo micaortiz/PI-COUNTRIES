@@ -8,22 +8,24 @@ const { getCountryByName } = require('../controllers/getCountryByName')
 
 const router = Router();
 
-router.get('/', (req, res)=>{
+/* routes */
+
+// verificar si va en controller o en handler
+router.get('/countries', (req, res)=>{ // ok
     const { name } = req.query;
     if(!name){
         getAllCountries(req, res)
+        // http://localhost:3001/countries
     }else{
         getCountryByName(req, res)
+        // http://localhost:3001/countries?name=argenti
     }
 })
 
+router.get('/countries/:id', getCountryById) // ok
+// http://localhost:3001/countries/ARG
 
-/* routes */
-// router.get('/countries', getCountries)
-
-// verificar si va en controller o en handler
-router.get('/:idPais', getCountryById)
-
-// router.get('countries/name', getCountryByName)
+// router.get('/countries', getAllCountries)
+// router.get('/countries/name', getCountryByName)
 
 module.exports = router;

@@ -13,6 +13,6 @@ server.use(cors());
 server.use(router);
 
 // Middleware para agregar el prefijo "/countries" a todas las rutas. Por ej si tengo '/login' -> "/rickandmorty/login"
-server.use('/countries', router )
+// server.use('/countries', router )
 
 module.exports = server;
