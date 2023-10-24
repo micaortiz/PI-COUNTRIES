@@ -22,11 +22,11 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     continents:{ // []
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false
 
     },
-    capital:{ //capitalinfo {latlng[]}
+    capital:{ //capital[]
       type: DataTypes.STRING,
       allowNull: false
 
