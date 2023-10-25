@@ -2,11 +2,12 @@
 const { Router } = require("express");
 
 /* controllers */
-const { getAllCountries } = require("../handlers/getAllCountriesHandler");
+const { getAllCountries } = require('../controllers/getAllCountries');
 const { getCountryById } = require("../controllers/getCountryById");
 const { getCountryByName } = require('../controllers/getCountryByName');
 const { postActivity } = require("../controllers/postActivity");
 const { getAllActivities } = require("../controllers/getActivity");
+const { updateActivity } = require("../controllers/updateActivity");
 
 const router = Router();
 
@@ -30,6 +31,9 @@ router.get('/countries/:id', getCountryById) // ok
 router.post('/activities', postActivity) // ok
 router.get('/activities', getAllActivities) // ok
 // http://localhost:3001/activities
+
+
+router.put('/activities/:id', updateActivity) // ok
 
 // router.get('/countries', getAllCountries)
 // router.get('/countries/name', getCountryByName)
