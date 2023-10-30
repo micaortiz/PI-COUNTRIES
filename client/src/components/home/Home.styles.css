@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    /* font-family: ; */
+ 
+    /* background-image: linear-gradient(to right top, #ad5389, #91407c, #752f6f, #591f61, #3c1053); */
+    /* background-image: linear-gradient(to bottom, #a16ab6, #87539c, #6d3c83, #54266b, #3c1053); */
+/* 
+    background-image: linear-gradient(to bottom, #6a7fb6, #5c649f, #504987, #462e6e, #3c1053); */
+    background-image: linear-gradient(to top, #6a7fb6, #5c649f, #504987, #462e6e, #3c1053);
+    
+}
+
+
+.home-title{
+    margin-top: 75px;
+    margin-bottom: 50px;
+    font-size: 76px;
+    color: white;
+    /* font-family: ; */
+}
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
