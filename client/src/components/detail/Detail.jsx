@@ -1,7 +1,7 @@
 // import React from 'react';
 // import axios from "axios"
 import { useParams } from "react-router-dom"
-import { useState, useEffect } from "react"
+import {  useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { getCountryById,cleanDetailCountry } from "../../redux/actions/actions"
 
@@ -16,33 +16,13 @@ const Detail = () => {
     const countryDetail = useSelector((state) => state.countryDetail)
     const activityCountry = useSelector((state)=>state.activityCountry)
     const dispatch = useDispatch();
-    //estado local
-    // const [country, setCountries] = useState({})
-
-    // Busca al personaje en la API cada vez que se monte y luego se desmonta y se bora la info
-    // useEffect(() => {
-    //     axios(`${URL_BASE}/${id}`)
-    //     // si utilizo params 
-    //     // axios(`https://rickandmortyapi.com/api/character/${params?.id}`)
-    //     .then(({ data }) => {
-    //        if (data.name) {
-    //           setCountries(data);
-    //        } 
-    //     })
-    //     .catch(()=>{
-    //         alert('No hay countries con ese ID');
-
-    //     })
-    //     // se realiza el desmontaje - limpia el estado
-    //     return setCountries({});
-    //  }, [id]);
+    
     useEffect(()=>{
         
         dispatch(getCountryById(id))
-        return () => dispatch(cleanDetailCountry())
-        // return setCountries({})
-    
-    },[]) //?averiguar si va con id o no
+        // se desmonta y se limpia el estado
+        return () => dispatch(cleanDetailCountry())    
+    },[])
 
     useEffect(()=>{
 

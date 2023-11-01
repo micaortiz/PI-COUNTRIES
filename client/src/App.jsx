@@ -9,7 +9,8 @@ import LandingPage from './components/landing/LandingPage';
 import Home from './components/home/Home';
 import Detail from './components/detail/Detail';
 import Form from './components/form/Form';
-import { getAllCountries } from './redux/actions/actions';
+import Nav from './components/nav/Nav';
+import { getAllCountries, getCountryByName } from './redux/actions/actions';
 
 
 function App() {
@@ -20,15 +21,22 @@ function App() {
     dispatch(getAllCountries())
   }, [])
 
-
+  const onSearch = async(name) => {
+    try{
+      dispatch(getCountryByName(name))
+    } catch{
+      throw Error(error.message);
+    }
+  }
   return (
     <div>
           {/* {location.pathname !== "/" && <Nav onSearch={onSearch} logout={logout} />} */}
+          {location.pathname !== "/" && <Nav onSearch={onSearch}/>}
       {/* <h1>Characters</h1> */}
       <Routes>
         <Route path="/" element={<LandingPage/>} />
         <Route path='/home' element={<Home/>}/>
-        <Route path='/form' element={<Form/>}/>
+        <Route path='/activities' element={<Form/>}/>
         
         {/* <Route
           path="/home"

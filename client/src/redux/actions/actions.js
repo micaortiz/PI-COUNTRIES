@@ -1,16 +1,16 @@
 import axios from 'axios';
-import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID,GET_COUNTRY_BY_NAME, FILTER_CONTINENTS, FILTER_ACTIVITY, ORDER_COUNTRY, CLEAN_DETAIL } from "./action-types";
+import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID,GET_COUNTRY_BY_NAME, FILTER_CONTINENTS, CREATE_ACTIVITY, ORDER_COUNTRY, CLEAN_DETAIL } from "./action-types";
 
 /* -  Botones/Opciones para **filtrar** por continente y por tipo de actividad turística.
 -  Botones/Opciones para **ordenar** tanto ascendentemente como descendentemente los países por orden alfabético y por cantidad de población. */
 
-const URL_BASE = 'http://localhost:3001/countries'
+const URL_BASE = 'http://localhost:3001'
 
 // ok
 export const getAllCountries = () =>{
     return async (dispatch)=>{
         try {
-            const {data} = await axios.get(URL_BASE) // solicitud tipo get 
+            const {data} = await axios.get(`${URL_BASE}/countries`) // solicitud tipo get 
 
             return dispatch({
                 type: GET_ALL_COUNTRIES,
@@ -27,7 +27,7 @@ export const getAllCountries = () =>{
 export const getCountryById = (id) =>{
     return async (dispatch) =>{
         try{
-            const {data} = await axios.get(`${URL_BASE}/${id}`)
+            const {data} = await axios.get(`${URL_BASE}/countries/${id}`)
             return dispatch({
                 type: GET_COUNTRY_BY_ID,
                 payload: data
@@ -50,10 +50,11 @@ export const cleanDetailCountry = () =>{
 export const getCountryByName = (name) => {
     return async (dispatch) => {
         try {
-        const {data} = await axios.get(`${URL_BASE}?name=${name}`)
+        const {data} = await axios.get(`${URL_BASE}/countries?name=${name}`)
+        // http://localhost:3001/countries/name?name=argent
         return dispatch({
             type: GET_COUNTRY_BY_NAME,
-            payload: data,
+            payload: data
         });
     
         } catch (error) {
@@ -61,6 +62,23 @@ export const getCountryByName = (name) => {
         }
     }
 };
+
+export const postActivity = (activityData) =>{
+    return async (dispatch) =>{
+        try {
+        const {data} = await axios.post(`${URL_BASE}/activities`, activityData)
+        return dispatch({
+            type: CREATE_ACTIVITY,
+            payload: data
+        })
+            
+        } catch (error) {
+            throw Error(error.message)  
+            
+        }
+    }
+}
+
 
 export const FilterContinent = (continent)=>{
     return {
@@ -70,12 +88,12 @@ export const FilterContinent = (continent)=>{
 }
 
 //? el filter es por name o por difficulty 
-export const FilterActivity = (name)=>{
-    return {
-        type: FILTER_ACTIVITY,
-        payload: name
-    }
-}
+// export const FilterActivity = (name)=>{
+//     return {
+//         type: FILTER_ACTIVITY,
+//         payload: name
+//     }
+// }
 
 export const OrderCountry = (orden)=>{
     return{

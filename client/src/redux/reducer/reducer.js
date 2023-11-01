@@ -1,10 +1,12 @@
-import { CLEAN_DETAIL, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID  } from "../actions/action-types";
+import { CLEAN_DETAIL, CREATE_ACTIVITY, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME  } from "../actions/action-types";
 
 const initialSte = {
-    // myFavorites: [],
     allCountries: [], // almacena a todos los paises
+    countryCopy: [], // almacenar una copia de los datos originales 
     countryDetail: [], //  almacena el detalle de un pais
-    activityCountry: [] // almacena la actividad asociada a un pais
+    activityCountry: [], // almacena la actividad asociada a un pais
+    countryName : [], // almacena el pais filtrado por nombre
+    activities: [] // almacena la actividad creada
 };
 
 const reducer = (state = initialSte, action) => {
@@ -13,7 +15,10 @@ const reducer = (state = initialSte, action) => {
         case GET_ALL_COUNTRIES:
             return{
                 ...state,
-                allCountries: action.payload
+                // localeCompare: comparar cadena de textos
+                allCountries: action.payload.sort((a, b) => a.name.localeCompare(b.name)),
+                
+                countryCopy: action.payload.sort((a, b) => a.name.localeCompare(b.name))
               }
         case GET_COUNTRY_BY_ID:
             return  {
@@ -23,12 +28,32 @@ const reducer = (state = initialSte, action) => {
 
 
             }
-
         case CLEAN_DETAIL:
             return{
                 ...state,
                 countryDetail: []
             }
+
+        case GET_COUNTRY_BY_NAME:
+            // const nameFound= [...state.allCountries].find((country)=>{
+                // return country.name === action.payload
+            // })
+            return{
+                ...state,
+                // countryName: nameFound
+                // countryName: action.payload.country,
+                // countryDetail: [],
+                allCountries: action.payload.country
+            }
+        
+        case CREATE_ACTIVITY:
+            return{
+                // copia solamente de activities
+                ...state.activities,
+                activities: action.payload
+            }
+        
+
         default:
         return { ...state };
     }

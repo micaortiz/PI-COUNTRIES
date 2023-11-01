@@ -9,9 +9,9 @@ const Home = () => {
         <div className="home">
             <h2 className="home-title">Home</h2>
             
-            <Nav/>
+            {/* <Nav/> */}
             {/* verificar si dps el search esta bien o va dentro de nav  */}
-            <SearchBar/> 
+            {/* <SearchBar/>  */}
             <Cards/> 
         </div>
     );
