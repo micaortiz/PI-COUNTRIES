@@ -7,7 +7,7 @@ const Nav = ({onSearch}) => {
         <div className="search-box">
             {/* <p>Estoy en el Nav</p> */}
             <nav >
-                <Link  to='/home'>
+                <Link  to='/countries'>
                     <button className="nav-button">HOME</button>
                 </Link> 
                 <Link  to='/activities'>

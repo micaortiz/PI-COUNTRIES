@@ -10,7 +10,7 @@ const LandingPage = ()=>{
 
             <p> Explore the countries of the world and plan your tourist activities</p>
 
-            <Link to='/home'>
+            <Link to='/countries'>
                 <button>Discover</button>
             </Link>
 

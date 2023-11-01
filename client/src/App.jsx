@@ -15,6 +15,7 @@ import { getAllCountries, getCountryByName } from './redux/actions/actions';
 
 function App() {
   const dispatch = useDispatch()
+  const location = useLocation(); // retorna un objeto, puedi hacer destructuring
   // const country = useSelector((state)=> state.countryCopy)
 
   // cuando se monta el componente por primera vez se despacha una action para obtener a todos los paises
@@ -41,11 +42,15 @@ function App() {
   return (
     <div>
           {/* {location.pathname !== "/" && <Nav onSearch={onSearch} logout={logout} />} */}
-          {location.pathname !== "/" && <Nav onSearch={onSearch}/>}
+          {location.pathname !== "/" && 
+          <Nav onSearch={onSearch}/>} 
       {/* <h1>Characters</h1> */}
+      {}
+      {/* <Nav/> */}
+
       <Routes>
         <Route path="/" element={<LandingPage/>} />
-        <Route path='/home' element={<Home/>}/>
+        <Route path='/countries' element={<Home/>}/>
         <Route path='/activities' element={<Form/>}/>
         
         {/* <Route
