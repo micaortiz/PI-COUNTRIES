@@ -1,22 +1,33 @@
 import validation from './validationForm'
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch} from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate} from 'react-router-dom'
+// import { useHistory } from 'react-router'
 import { postActivity } from '../../redux/actions/actions'
 import styles from './Form.module.css'
 
 const Form = () => {    
-
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-    // estado local
-    const [activityData, setActivityData] = useState({
+    const initialForm ={        
         name: '',
         difficulty: '',
         duration: '',
         season:'',
         countries:[] // almacena el id
-    })
+    }
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    // let history = useHistory()
+    // estado local
+    const [activityData, setActivityData] = useState( 
+        initialForm
+        // {
+        // name: '',
+        // difficulty: '',
+        // duration: '',
+        // season:'',
+        // countries:[] // almacena el id
+    // }
+    )
     const [selectCountries, setSelectCountries] = useState([])
 
     // estado global
@@ -128,20 +139,50 @@ const Form = () => {
     const handlePostActivity = (event) => {
         event.preventDefault()
         dispatch(postActivity(activityData))
-        setActivityData({
-            name: '',
-            difficulty: '',
-            duration: '',
-            season: '',
-            countries: []
-        })
-        setSelectCountries([])
+        // setActivityData(
+        //     initialForm
+        //     // {
+        //     // name: '',
+        //     // difficulty: '',
+        //     // duration: '',
+        //     // season: '',
+        //     // countries: []
+        //     // }
+        // )
+        // setSelectCountries([])
         // window.location.reload();
-        window.alert('Se creo la actividad con éxito!')
-        navigate("/home")
+        // resetForm()
+        // Para volver a la pantalla principal
+        // history.push('/home')
+        // Reseteamos el input
+
+        setActivityData(
+            initialForm
+            // {
+            // name: '',
+            // difficulty: '',
+            // duration: '',
+            // season: '',
+            // countries: []
+            // }
+            )
+
+            window.alert('Se creo la actividad con éxito!')
+
+             window.location.reload()
+        // navigate("/activities")
     }
     
+    // const resetForm = () => {
+    //     setForm(initialForm); //limpiamos el form
+    //     setPaises([...paises, ...paisesForm.seleccionados]);
+    //     setPaisesForm(initialPaisesForm);
+    //   };
 
+    const resetForm = () =>{
+        setActivityData(initialForm)
+        setSelectCountries([])
+    }
 
 
     useEffect(()=>{
@@ -162,8 +203,14 @@ const Form = () => {
         event.preventDefault();
         // login(userData);
     }
+
+
+    const handleResetForm = () => {
+        setActivityData(initialForm); // Restablece los campos de entrada
+        setSelectCountries([]); // Borra los países seleccionados
+      };
     return (
-        <form onSubmit={handlePostActivity}>
+        <form onSubmit={handlePostActivity} onReset={handleResetForm}>
             <h2>Create a new Activity</h2>
 
             <label htmlFor="name" >Activity </label>
@@ -298,12 +345,15 @@ const Form = () => {
         </div> */}
 
             <div >
-                <button type='reset'>Reset</button>
+                <button type='reset'>RESET</button>
                 <button 
                     type="submit" 
-                    disabled={errors.name || errors.difficulty || errors.season || errors.countries}>
+                    disabled={errors.name || errors.difficulty || errors.season || errors.countries} 
+                    // onClick={() => window.location.reload()}
+                    // onClick={()=>resetForm()}
+                >
                         {/* || errors.countries */}
-                        Create
+                        CREATE
                 </button>
             </div>
         </form>

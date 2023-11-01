@@ -5,6 +5,7 @@ import "./Home.styles.css"
 
 
 const Home = () => {
+    
     return (
         <div className="home">
             <h2 className="home-title">Home</h2>

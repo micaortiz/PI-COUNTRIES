@@ -15,11 +15,21 @@ import { getAllCountries, getCountryByName } from './redux/actions/actions';
 
 function App() {
   const dispatch = useDispatch()
+  // const country = useSelector((state)=> state.countryCopy)
 
   // cuando se monta el componente por primera vez se despacha una action para obtener a todos los paises
   useEffect(() => {
     dispatch(getAllCountries())
   }, [])
+
+//   useEffect(() => {
+//     if (!countriesCopy.length) {
+//         dispatch(getAllCountries())
+//         window.scrollTo(0, 0);
+//     }
+//     dispatch(getAllActivities())
+// }, [])
+
 
   const onSearch = async(name) => {
     try{
