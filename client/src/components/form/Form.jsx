@@ -93,22 +93,8 @@ const Form = () => {
         setSelectCountries([...selectCountries, { id, name, flags }]);
     }
 
-    // eliminar paises seleccionados
-    // const handleDeleteCountries = (id)=>{
-    //     const countriesFiltered = selectCountries.filter((country)=> country.id !== id)
-    //     // sobre los paises filtrados extraigo el id
-    //     const newCountries = countriesFiltered.map(country => country.id);
-    //     // map() transforma una lista de obj en una lista de id 
-    //     // almacena a todos menos al filtrado
-    //     setSelectCountries(countriesFiltered)
 
-    //     setActivityData({
-    //         ...activityData,
-    //         countries: newCountries
-    //     })
-
-    // }
-
+    //? NO FUNCIONA 
     const handleDeleteCountries = (id) => {
         const countryToDelete = selectCountries.find((country) => country.id === id);
         
@@ -134,6 +120,17 @@ const Form = () => {
         }
     }
 
+    //? NO FUNCIONA
+    const handleDelete = (selectCountries) => {
+
+        const updatedCountries = activityData.countries.filter(country => country !== selectCountries);
+        setActivityData({
+            ...activityData,
+            countries: updatedCountries,
+        });
+
+        
+    }
     
     
     const handlePostActivity = (event) => {
@@ -167,23 +164,12 @@ const Form = () => {
             // }
             )
 
-            window.alert('Se creo la actividad con éxito!')
+            window.alert('¡Se creo la actividad con éxito!')
 
              window.location.reload()
         // navigate("/activities")
     }
     
-    // const resetForm = () => {
-    //     setForm(initialForm); //limpiamos el form
-    //     setPaises([...paises, ...paisesForm.seleccionados]);
-    //     setPaisesForm(initialPaisesForm);
-    //   };
-
-    const resetForm = () =>{
-        setActivityData(initialForm)
-        setSelectCountries([])
-    }
-
 
     useEffect(()=>{
         // para que no muestre los errores al comienzo
@@ -195,20 +181,19 @@ const Form = () => {
 
     },[activityData])
 
-
-
     
     // para que no recargue la pag cuando se de click en el button
-    const handleSubmit = (event) =>{
-        event.preventDefault();
-        // login(userData);
-    }
+    // const handleSubmit = (event) =>{
+    //     event.preventDefault();
+    //     // login(userData);
+    // }
 
 
     const handleResetForm = () => {
         setActivityData(initialForm); // Restablece los campos de entrada
         setSelectCountries([]); // Borra los países seleccionados
       };
+    
     return (
         <form onSubmit={handlePostActivity} onReset={handleResetForm}>
             <h2>Create a new Activity</h2>
@@ -291,6 +276,7 @@ const Form = () => {
                         <div key={id} >
                             {/* <button ><img onClick={() => handleDeleteCountries(id)}title='delete' />X</button> */}
                             {/* <NavLink  to={`/countries/${id}`}> */}
+                                {/* <button onClick={()=> handleDelete(id)}>X</button> */}
                                 <img  src={flags} alt={name} />
                                 {/* <h2 >{name}</h2> */}
                             {/* </NavLink> */}
@@ -298,59 +284,12 @@ const Form = () => {
                     )
                 })}
 
-            {/* {selectCountries?.map((ctry) => (
-                // {selectCountries?.map(({ id, name, flags }) => (
-                 
-                        <div key={ctry.id} >
-                            <button onClick={handleDeleteCountries(ctry.id)}>
-                                X
-                            </button>
-                            <img 
-                                src={ctry.flags}
-                                alt={ctry.name} 
-                                // name
-                            /> */}
-                            {/* <NavLink  to={`/countries/${id}`}>
-                                <img  src={flags} alt="" />
-                                <h2 >{name}</h2>
-                            </NavLink> */}
-                        {/* </div>
-                   
-            ))} */}
-{/* 
-  <div>
-          <p className={styles["selected-countries-title"]}>
-            Paises seleccionados:
-          </p>
-          <div>
-            {paisesForm.seleccionados.length ? (
-              paisesForm.seleccionados.map((pais) => (
-                <div key={pais.id} className={styles["container-bandera"]}>
-                  <button name={pais.id} onClick={deleteBandera}>
-                    x
-                  </button>
-                  <img
-                    className={styles.bandera}
-                    src={pais.imagen_bandera}
-                    alt={pais.nombre}
-                    title={`Eliminar ${pais.nombre}`}
-                    name={pais.id}
-                  />
-                </div>
-              ))
-            ) : (
-              <Message content={"Aún no ha seleccionado ningún país"} />
-            )}
-          </div>
-        </div> */}
-
             <div >
                 <button type='reset'>RESET</button>
                 <button 
                     type="submit" 
                     disabled={errors.name || errors.difficulty || errors.season || errors.countries} 
                     // onClick={() => window.location.reload()}
-                    // onClick={()=>resetForm()}
                 >
                         {/* || errors.countries */}
                         CREATE

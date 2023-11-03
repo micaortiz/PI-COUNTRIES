@@ -11,7 +11,7 @@ const Home = () => {
             
             {/* <Nav/> */}
             {/* verificar si dps el search esta bien o va dentro de nav  */}
-            <h2 className="home-title">Home</h2>
+            <h2 className="home-title">Countries</h2>
             {/* <SearchBar/>  */}
             <Cards/> 
         </div>

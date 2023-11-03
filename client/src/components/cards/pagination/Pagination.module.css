@@ -1,0 +1,42 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+} */
+
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+}
+.paginationPages{
+    margin: 1rem;
+    padding: 0.3rem 1rem;
+    border-radius: 10px;
+    background-color: #00000000;
+}
+
+.btnPage {
+    /* background-color: #595bdb; */
+    cursor: pointer;
+    background-color: #002962;
+    font-weight: 500;
+    border: none;
+    border-radius: 30px;
+    min-width: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    padding: 10px 15px;
+    margin: 3px;
+}
+.btnPage:hover {
+    box-shadow: 2.5px 2.5px 0px #1b1a1a58;
+
+}
+
+.active {
+    background-color: #0d99c8;
+    /* background-color: #c77dff; */
+}
+
+
