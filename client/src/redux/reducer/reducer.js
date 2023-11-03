@@ -1,8 +1,8 @@
-import { CLEAN_DETAIL, CREATE_ACTIVITY, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME  } from "../actions/action-types";
+import { CLEAN,CLEAN_DETAIL, CREATE_ACTIVITY, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME  } from "../actions/action-types";
 
 const initialSte = {
     allCountries: [], // almacena a todos los paises
-    countryCopy: [], // almacenar una copia de los datos originales 
+    countryCopy: {}, // almacenar una copia de los datos originales 
     countryDetail: [], //  almacena el detalle de un pais
     activityCountry: [], // almacena la actividad asociada a un pais
     countryName : [], // almacena el pais filtrado por nombre
@@ -34,6 +34,11 @@ const reducer = (state = initialSte, action) => {
                 countryDetail: []
             }
 
+        // case CLEAN :
+        //     return{
+        //         ...state,
+        //         allCountries:[]
+        //     }    
         case GET_COUNTRY_BY_NAME:
             // const nameFound= [...state.allCountries].find((country)=>{
                 // return country.name === action.payload

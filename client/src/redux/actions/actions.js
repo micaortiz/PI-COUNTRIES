@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID,GET_COUNTRY_BY_NAME, FILTER_CONTINENTS, CREATE_ACTIVITY, ORDER_COUNTRY, CLEAN_DETAIL } from "./action-types";
+import { CLEAN, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID,GET_COUNTRY_BY_NAME, FILTER_CONTINENTS, CREATE_ACTIVITY, ORDER_COUNTRY, CLEAN_DETAIL } from "./action-types";
 
 /* -  Botones/Opciones para **filtrar** por continente y por tipo de actividad turística.
 -  Botones/Opciones para **ordenar** tanto ascendentemente como descendentemente los países por orden alfabético y por cantidad de población. */
@@ -43,7 +43,11 @@ export const cleanDetailCountry = () =>{
         type: CLEAN_DETAIL
     })
 }
-
+// export const clean = () =>{
+//     return ({
+//         type: CLEAN
+//     })
+// }
 
 
 // ok-----

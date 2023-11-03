@@ -20,6 +20,7 @@ function App() {
 
   // cuando se monta el componente por primera vez se despacha una action para obtener a todos los paises
   useEffect(() => {
+    // dispatch(clean())
     dispatch(getAllCountries())
   }, [])
 
@@ -52,17 +53,8 @@ function App() {
         <Route path="/" element={<LandingPage/>} />
         <Route path='/countries' element={<Home/>}/>
         <Route path='/activities' element={<Form/>}/>
-        
-        {/* <Route
-          path="/home"
-          element={<Cards characters={characters} onClose={onClose} />}
-        /> */}
-
-        {/* <Route path="/about" element={<About />} /> */}
         <Route path="/detail/:id" element={<Detail/>} />
-        {/* <Route path="/favorites" element={<Favorites />} /> */}
         {/* :id -> es dinamico, es params  */}
-        {/* <Route path='*' element={<Error/>} /> */}
       </Routes>
     </div>
   )
