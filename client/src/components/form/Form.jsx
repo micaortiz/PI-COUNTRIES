@@ -129,21 +129,6 @@ const Form = () => {
         // if(Object.entries(errors).length === 0 ){
 
             dispatch(postActivity(activityData))
-            // setActivityData({
-            //     name: '',
-            //     difficulty: '',
-            //     duration: '',
-            //     season:'',
-            //     countries:[]
-            // })
-            // setActivityData(initialForm)
-
-                    // setSelectCountries([])
-                    // window.location.reload();
-                    // resetForm()
-                    // Para volver a la pantalla principal
-                    // history.push('/home')
-                    // Reseteamos el input
                             
             alert('¡Activity has been created successfully!')
             // await handleResetForm()
@@ -158,7 +143,8 @@ const Form = () => {
             // navigate("/countries")
             
         // }
-             window.location.reload()
+            //  window.location.reload()
+             window.location.href = '/countries'
 
 
     }

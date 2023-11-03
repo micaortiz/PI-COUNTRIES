@@ -9,6 +9,14 @@ const initialSte = {
     activities: [] // almacena la actividad creada
 };
 
+// ? filtrar por continente y por tipo de actividad turística.
+
+// ? Botones/Opciones para **ordenar** tanto ascendentemente como descendentemente los países por orden alfabético y por cantidad de población.
+
+
+
+
+
 const reducer = (state = initialSte, action) => {
     switch (action.type) {
 
