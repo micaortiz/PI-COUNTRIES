@@ -10,7 +10,7 @@ import Home from './components/home/Home';
 import Detail from './components/detail/Detail';
 import Form from './components/form/Form';
 import Nav from './components/nav/Nav';
-import { getAllCountries, getCountryByName } from './redux/actions/actions';
+import { getActivities, getAllCountries, getCountryByName } from './redux/actions/actions';
 
 
 function App() {
@@ -22,7 +22,9 @@ function App() {
   useEffect(() => {
     // dispatch(clean())
     dispatch(getAllCountries())
+    // dispatch(getActivities()) // obtengo las actividades que ya estan creadas
   }, [])
+// }, [dispatch])
 
 //   useEffect(() => {
 //     if (!countriesCopy.length) {

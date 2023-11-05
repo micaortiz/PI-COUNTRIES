@@ -5,6 +5,8 @@ import {  useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { getCountryById,cleanDetailCountry } from "../../redux/actions/actions"
 
+
+
 import styles from './Detail.module.css'
 
 
@@ -27,6 +29,7 @@ const Detail = () => {
     useEffect(()=>{
 
     },[activityCountry])
+    
 
     return (
         <div>
@@ -59,10 +62,55 @@ const Detail = () => {
                     </div>
                 </div>
             </div>
-                    <h2>Activities that can be performed</h2>
-            {/* <p>Estoy en el detail</p> */}
+
+            <h2>🚩 Activities that can be performed</h2>
+            <div>
+                        
+             {countryDetail.Activities && countryDetail.Activities.length > 0 ? (
+                // Si hay actividades asociadas al país, muestra las actividades
+                countryDetail.Activities.map((activity) => (
+                    
+                    <div key={activity.id}>
+                    <h3>{activity.name}</h3>
+                    <p>Difficulty {activity.difficulty}</p>
+                    <p>Duration {activity.duration} hours</p>
+                    <p>Season {activity.season}</p>
+                    </div>
+                ))
+                ) : (
+                // Si no hay actividades asociadas al país, 
+                <h4>There are no activities for this country yet!</h4>
+                // Aún no hay actividades para este país
+            )}
+
+            </div>
+
         </div>
     );
 }
 
 export default Detail;
+
+/*                {
+                    countryDetail.Activities?.map((activity) => (
+                    <div key={activity.id}>
+                        <h3>{activity.name}</h3>
+                        <p>Difficulty: {activity.difficulty}</p>
+                        <p>Duration {activity.duration} hours</p>
+                        <p>Season: {activity.season}</p>
+                    </div>
+              ))} */
+
+              
+                {/* {
+                    countryDetail.Activities?.map((activity) => (
+                    <div key={activity.id}>
+                        <h3>{activity.name}</h3>
+                        <p>Difficulty: {activity.difficulty}</p>
+                        <p>Duration {activity.duration} hours</p>
+                        <p>Season: {activity.season}</p>
+                    </div>
+                    ))
+                } */}
+                        
+             {/* <h4>There are no activities for this country yet</h4>  */}

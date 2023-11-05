@@ -11,15 +11,26 @@ const SearchBar = ({onSearch}) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const [namec, setNamec]=useState('')
+    const [name, setName]=useState('')
+
+    // const handleChange = (event) =>{
+    //     // event.preventDefault()
+    //     const newName = event.target.value
+    //     setNamec(newName)
+    //     onSearch(newName)
+    // }
 
     const handleChange = (event) =>{
-        // event.preventDefault()
-        const newName = event.target.value
-        setNamec(newName)
-        onSearch(newName)
+        setName(event.target.value)
     }
 
+    const handleSumit = (event) => {
+        event.preventDefault()
+        dispatch(getCountryByName(name))
+        setName('')
+        // setInput(1)
+        // setPag(1)
+    }
     // const handleClick = () =>{
     //     // if(namec){
     //         dispatch(getCountryByName(namec))
@@ -37,24 +48,18 @@ const SearchBar = ({onSearch}) => {
 
     return (
         <div>
-            <input type="search" onChange={handleChange} value={namec} placeholder="Search Country" />
+            <input type="search" name="search" onChange={e=> handleChange(e)} value={name} placeholder="Search Country..." />
 
-            <button onClick={() => onSearch(namec)}>
+            <button onClick={e=> handleSumit(e)} >
                 <span>SEARCH</span>
             </button>
+
+
+
 
             {/* <button onClick={handleReset}>
                 <span>RESET</span>
             </button> */}
-
-
-
-
-
-
-
-
-
 {/* 
             {
                 countryName?.map((country)=>{

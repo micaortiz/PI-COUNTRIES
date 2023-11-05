@@ -5,8 +5,12 @@ import Pagination from './pagination/Pagination';
 import { useState } from 'react';
 
 
-const Cards = () => {
-    const  allCountries  = useSelector((state) => state.allCountries)
+const Cards = ({allCountries}) => {
+    // const  allCountries  = useSelector((state) => state.allCountries)
+
+    if (!allCountries || !Array.isArray(allCountries)) {
+        return <div>No se han encontrado países.</div>;
+      }
 
     // total de elementos a renderizar por pag
     const elementsPerPage = 10
