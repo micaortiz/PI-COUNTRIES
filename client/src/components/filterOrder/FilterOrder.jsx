@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./FilterOrder.module.css"
 import { useEffect, useState } from "react";
 import { clean, filterContinent, getActivities, orderCountry, orderPopulations } from "../../redux/actions/actions";
-
+import styles from "../searchBar/SearchBar.module.css"
+import inputStyles from "../styles/Input.module.css";
 
 const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,filterByActivity ,setCurrentPage}) => {
 
@@ -49,6 +49,8 @@ const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,filterB
 
     const handleOrderPopulations = (event) =>{
         orderPopulations((event.target.value))
+        // setCurrentPage(1)
+
     }
 
     // useEffect = (()=>{
@@ -104,13 +106,13 @@ const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,filterB
     })
 
     return ( 
-        <div>
-            <h3>Aca van los filtros y ordenamientos</h3>
-            <h4>Sort by:</h4>
+        <div className={styles.all}>
+            {/* <h3>Aca van los filtros y ordenamientos</h3> */}
+            <h4 >Sort by </h4>
             
             {/* ordenar por nombre */}
-            <label htmlFor="">Name </label>
-            <select name="" id="" onChange={handleOrder}>
+            <label htmlFor="" className={styles["titles"]} >Name </label>
+            <select  className={styles["order-np"]}  name=""  onChange={handleOrder}>
                 {/* <option value="">None</option> */}
                 <option value="ASC">A-Z</option>
                 <option value="DESC">Z-A</option>
@@ -118,19 +120,20 @@ const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,filterB
             <br />
 
             {/* ordenar por poblacion */}
-            <label htmlFor="">Populations </label>
-            <select name="" id="" onChange={handleOrderPopulations}>
+            <label htmlFor="" className={styles["titles"]}>Populations </label>
+            <select className={styles["order-np"]}  name="" id="" onChange={handleOrderPopulations}>
                 {/* <option value="">None</option> */}
                 <option value="ASC_POP">Ascending</option>
                 <option value="DESC_POP">Descending</option>
             </select>
+
             <br />
 
-            <h4>Filter by:</h4>
+            <h4>Filter by</h4>
 
             {/* filtrar por continente */}
-            <label htmlFor="">Continents </label>
-            <select onChange={handleFilter}>
+            <label htmlFor="" className={styles["titles"]} >Continents </label>
+            <select className={styles["filters-ca"]} onChange={handleFilter}>
                 <option value="ALL">All</option>
                 <option value="Africa">Africa</option>
                 <option value="Antarctica">Antarctica</option>
@@ -144,10 +147,10 @@ const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,filterB
             <br />
 
             {/* filtrar por actividad */}
-            <label htmlFor="">Activities </label>
+            <label htmlFor="" className={styles["titles"]}>Activities </label>
 
 
-            <select onChange={handleActivitySelect}>
+            <select className={styles["filters-ca"]} onChange={handleActivitySelect}>
 
             {/* Options for activity filter */}
             {/* <option value="ALL">All</option>
@@ -187,7 +190,7 @@ const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,filterB
 
           </select>
 
-          <select  onChange={handleActivitySelect}> 
+          <select  className={styles["filters-ca"]} onChange={handleActivitySelect}> 
                     <option >ACTIVIDAD</option>
                     {arrayActivity1?.map(item => {
                         return(
@@ -201,9 +204,9 @@ const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,filterB
 
             <br />
             {/* clean - NO FUNCIONA */}
-            <button onClick={handleResetFilters}>CLEAR FILTER</button>
+{/*             <button onClick={handleResetFilters}>CLEAR FILTER</button>
 
-
+ */}
         </div>
     );
 }

@@ -3,24 +3,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllCountries, getCountryByName } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import styles from "./SearchBar.module.css";
+import stylesInputs from '../styles/Input.module.css'
 
 
 // encontrar paises por nombre
-const SearchBar = ({onSearch}) => {
+const SearchBar = ({setCurrentPage}) => {
+    // const SearchBar = ({onSearch}) => {
     // const countryName = useSelector((state) => state.allCountries)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const [name, setName]=useState('')
+    const [name, setName]=useState("")
 
     // const handleChange = (event) =>{
-    //     // event.preventDefault()
-    //     const newName = event.target.value
-    //     setNamec(newName)
-    //     onSearch(newName)
-    // }
-
-    const handleChange = (event) =>{
+        //     const newName = event.target.value
+        //     setNamec(newName)
+        //     onSearch(newName)
+        // }
+        
+        const handleChange = (event) =>{
+        event.preventDefault()
         setName(event.target.value)
     }
 
@@ -31,6 +34,18 @@ const SearchBar = ({onSearch}) => {
         // setInput(1)
         // setPag(1)
     }
+
+
+    const onSearch = ()=>{
+        dispatch(getCountryByName(name))
+        setCurrentPage(1)
+
+    }
+
+    const handleSearch = () => {
+        onSearch(name)
+    }
+
     // const handleClick = () =>{
     //     // if(namec){
     //         dispatch(getCountryByName(namec))
@@ -47,11 +62,13 @@ const SearchBar = ({onSearch}) => {
     //   }, [countryName]);
 
     return (
-        <div>
-            <input type="search" name="search" onChange={e=> handleChange(e)} value={name} placeholder="Search Country..." />
+        <form className={styles.searcher}>
+            <input className={styles["input-form"]}type="text" onChange={handleChange} value={name} placeholder="Search Country..." />
 
-            <button onClick={e=> handleSumit(e)} >
-                <span>SEARCH</span>
+            <button className={styles["btn"]} onClick={onSearch}  >
+                <span>    
+                    SEARCH
+                </span>
             </button>
 
 
@@ -71,7 +88,7 @@ const SearchBar = ({onSearch}) => {
 
 
 
-        </div>
+        </form>
     );
 }
 

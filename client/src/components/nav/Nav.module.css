@@ -27,7 +27,7 @@ body{
     /* align-items: center; */
     align-items: flex-start;
 }
-.contenedor{
+.container{
     /* display: flex;
     flex-wrap: nowrap;
     justify-content: flex-end;
@@ -85,11 +85,11 @@ body{
     /* transition: border .2s ease; */
 }
 
-.contenedor .textCreate .btn:hover{
+.container .textCreate .btn:hover{
     transform: scale(1.1);
 }
 
-.contenedor .textCreate button:hover{
+.container .textCreate button:hover{
     /* color: #35c3cd; */
     color: #1fa2ce;
 }

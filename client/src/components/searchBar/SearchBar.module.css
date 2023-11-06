@@ -1,0 +1,121 @@
+.all{
+    /* border-right: #c0c0c0 solid 1.8px; */
+    border-bottom: #c0c0c0 solid 1.8px;
+    margin-left: 50px;
+    margin-right: 90px;
+    margin-bottom: 35px;
+    height: 50px;
+    display: flex;
+    grid-gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: left;
+    font-size: 20px;
+
+}
+
+.titles{
+    margin-top: 7px;
+}
+
+h4{
+    margin-top: -30px;
+    /* align-items: center; */
+    text-align: center;
+}
+
+
+.filters {
+    grid-area: filters;
+    text-align: start;
+  }
+  
+  .searcher {
+    grid-area: searcher;
+  }
+
+.input-form {
+    color: black;
+    font-weight: 600;
+    height: 30px;
+    width: 400px;
+    border-radius: 12px;
+    margin: 85px 0;
+    background-color: #a9d6e5;
+    border: none;
+    accent-color: #5a189a;
+    text-align: center;
+    /* color-scheme: none ; */
+}
+
+.btn{
+    
+    background-color: #1fa2ce;
+    color: white;
+    font-weight: 550;
+    border-radius: 12px;
+}
+
+
+.filters-ca{
+  background-color: #468faf;
+  height: 40px;
+  padding: 5px 8px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  text-align:center;
+}
+
+.order-np{
+  background-color: #468faf;
+  height: 40px;
+  padding: 5px 8px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  text-align:center;
+}
+
+
+
+  /* .searcher .searchBy,
+  .btn-search,
+  .filters .sortBy,
+  .filters .sort {
+    background-color: #0a9396;
+    height: 40px;
+    padding: 5px 8px;
+    border: none;
+    cursor: pointer;
+    color: white;
+  } */
+  
+
+  
+
+  .searcher .searchBy,
+  .filters .sortBy {
+    border-radius: none ;
+  }
+  
+  .btn-search,
+  .filters .sort {
+    /* border-radius: 0 1rem 1rem 0; */
+    border-radius: none ;
+
+  }
+  
+  .btn-search {
+    color: transparent;
+    width: 40px;
+    background: var(--dark-color) url(../assets/images/lupa.svg) no-repeat 98%
+      center;
+    background-size: 35px;
+  }
+  
+  .input-search {
+    width: 250px;
+    height: 40px;
+    text-align: left;
+    padding-left: 10px;
+  }

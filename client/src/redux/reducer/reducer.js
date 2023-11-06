@@ -23,7 +23,8 @@ const initialSte = {
     countryName : [], // almacena el pais filtrado por nombre
     activities: [], // almacena la actividad creada
     filteredCountries : [], // almacenar una copia de los datos originales y guarda filtros y ordenamientos 
-    allActivities : []
+    allActivities : [],
+    originalCountries : []
 };
 
 // ? filtrar por continente y por tipo de actividad turística.
@@ -48,7 +49,10 @@ const reducer = (state = initialSte, action) => {
 
                 filteredCountries: action.payload,
                 // .sort((a, b) => a.name.localeCompare(b.name))
-                allActivities : action.payload
+                allActivities : action.payload,
+                
+                originalCountries : action.payload
+
             }
         case GET_COUNTRY_BY_ID:
             return  {
@@ -72,13 +76,16 @@ const reducer = (state = initialSte, action) => {
             // const nameFound= [...state.allCountries].find((country)=>{
                 // return country.name === action.payload
             // })
+
+            
             return{
                 ...state,
                 // countryName: nameFound
-                // countryName: action.payload.country,
+                // countryCopy: action.payload,
                 // countryDetail: [],
-                allCountries: action.payload,
-                countryName: action.payload
+                // allCountries: action.payload,
+                // countryName: action.payload,
+                // filteredCountries: [...action.payload.allCountries]
             }
         
         case CREATE_ACTIVITY:

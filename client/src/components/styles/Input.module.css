@@ -1,0 +1,27 @@
+.label-form {
+    display: block;
+    text-align: left;
+    font-size: 18px;
+    padding: 5px;
+    color:  #ffffff;
+    font-weight: 600;
+  }
+  
+  .input-country,
+  .input-form {
+    height: 30px;
+    width: 85%;
+    border-radius: 10px;
+    margin: 5px 0;
+    background-color: #7b2cbf;
+    border: none;
+    accent-color: #5a189a;
+    text-align: center;
+    /* color-scheme: none ; */
+  }
+  
+  .input-country {
+    border-radius: 10px 0 0 10px;
+    width: 65%;
+    display: inline-block;
+  }

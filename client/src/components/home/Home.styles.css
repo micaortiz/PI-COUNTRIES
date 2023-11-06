@@ -8,7 +8,11 @@ body{
     /* background-image: linear-gradient(to bottom, #a16ab6, #87539c, #6d3c83, #54266b, #3c1053); */
 /* 
     background-image: linear-gradient(to bottom, #6a7fb6, #5c649f, #504987, #462e6e, #3c1053); */
-    background-image: linear-gradient(to top, #6a7fb6, #5c649f, #504987, #462e6e, #3c1053);
+    /* background-image: linear-gradient(to top, #6a7fb6, #5c649f, #504987, #4e2e81, #63188b); */
+    /* background-color: #6a298d; */
+    background-color: #571c87;
+
+
     
 }
 

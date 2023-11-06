@@ -69,18 +69,58 @@ export const clean = () =>{
 export const getCountryByName = (name) => {
     return async (dispatch) => {
         try {
-        const {data} = await axios.get(`${URL_BASE}/countries?name=${name}`)
+        const response = await axios.get(`${URL_BASE}/countries?name=${name}`)
         // http://localhost:3001/countries/name?name=argent
+        console.log('Data');
+        console.log(response.data.country);
         return dispatch({
             type: GET_COUNTRY_BY_NAME,
-            payload: data
+            payload: response.data.country,
         });
     
         } catch (error) {
-            throw Error(error.message)  
+            // throw Error(error.message) 
+            alert('Countries name not found') 
         }
     }
 };
+
+
+// export const getCountryByName = (name) => {
+//     return async (dispatch, getState) => {
+//     try {
+//             if (name.trim() === '') {
+//                 // Si el valor de búsqueda está vacío, restaura la lista original
+//                 const originalCountries = getState().originalCountries;
+//                 return dispatch({
+//                     type: SEARCH_COUNTRY,
+//                     payload: originalCountries
+//                 });
+//             } else {
+//                 // Realiza la búsqueda en función de newName
+//                 const response = await axios.get(`http://localhost:3001/countries?name=${name}`)
+//                 const data = response.data;
+//                 return dispatch({
+//                     type: GET_COUNTRY_BY_NAME,
+//                     payload: data
+//                 });
+//             }
+//         } catch (error) {
+//             alert('Country name not found')
+//             // throw Error(error.message);
+//         }
+//     } 
+// }
+
+
+
+
+
+
+
+
+
+
 
 // ok
 export const postActivity = (activityData) =>{

@@ -65,21 +65,24 @@ const Detail = () => {
 
             <h2>🚩 Activities that can be performed</h2>
             <div>
+                
+            </div>
+            <div className={styles['activity-container']} >
                         
              {countryDetail.Activities && countryDetail.Activities.length > 0 ? (
                 // Si hay actividades asociadas al país, muestra las actividades
                 countryDetail.Activities.map((activity) => (
                     
                     <div key={activity.id}>
-                    <h3>{activity.name}</h3>
-                    <p>Difficulty {activity.difficulty}</p>
-                    <p>Duration {activity.duration} hours</p>
-                    <p>Season {activity.season}</p>
+                    <h3>💢 {activity.name}</h3>
+                    <p>Difficulty: {activity.difficulty}</p>
+                    <p>Duration: {activity.duration} hours</p>
+                    <p>Season: {activity.season}</p>
                     </div>
                 ))
                 ) : (
                 // Si no hay actividades asociadas al país, 
-                <h4>There are no activities for this country yet!</h4>
+                <h4 >There are no activities for this country yet!</h4>
                 // Aún no hay actividades para este país
             )}
 

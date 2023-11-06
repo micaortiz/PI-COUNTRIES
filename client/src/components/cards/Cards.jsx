@@ -1,16 +1,16 @@
 import Card from '../card/Card'
 import { useSelector } from 'react-redux';
 import styles from './Cards.module.css'
-import Pagination from './pagination/Pagination';
+import Pagination from '../pagination/Pagination';
 import { useState } from 'react';
 
 
-const Cards = ({allCountries}) => {
+const Cards = ({allCountries, currentPage, setCurrentPage}) => {
     // const  allCountries  = useSelector((state) => state.allCountries)
 
     if (!allCountries || !Array.isArray(allCountries)) {
         return <div>No se han encontrado países.</div>;
-      }
+    }
 
     // total de elementos a renderizar por pag
     const elementsPerPage = 10
@@ -19,7 +19,7 @@ const Cards = ({allCountries}) => {
     const [countriesPerPage,setCountriesPerPage] = useState(10)
     
     // pagina actual -> al momento que se carguen sea la pag uno
-    const [currentPage, setCurrentPage] = useState(1) // empieza a partir de uno
+    // const [currentPage, setCurrentPage] = useState(1) // empieza a partir de uno
 
     // console.log(allCountries);
     // const numCountries = allCountries ? allCountries.length : 0;

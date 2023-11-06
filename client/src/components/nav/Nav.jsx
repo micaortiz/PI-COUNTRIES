@@ -1,19 +1,27 @@
 import { Link } from "react-router-dom";
-import "./nav.styles.css"
 import SearchBar from "../searchBar/SearchBar";
+import logo from "../../assets/logo_v3.jpg"
+// import "./Nav.styles.css"
+import styles from "./Nav.module.css";
 
 const Nav = ({onSearch}) => {
+    // const Nav = ({onSearch}) => {
     return (
         <div className="search-box">
             {/* <p>Estoy en el Nav</p> */}
-            <nav >
-                <Link  to='/countries'>
-                    <button className="nav-button">HOME</button>
+            <nav className={styles["container"]} >
+                {/* <Link to='/'>
+                    <img className={styles.logo} 
+                    src={logo} alt="logo" 
+                    />
+                </Link> */}
+                <Link  to='/countries' className={styles['textCreate']} >
+                    <button className={styles['btn']}>HOME</button>
                 </Link> 
-                <Link  to='/activities'>
-                    <button className="nav-button">ACTIVITY</button>
+                <Link  to='/activities' className={styles['textCreate']}>
+                    <button className={styles['btn']}>ACTIVITY</button>
                 </Link> 
-                <SearchBar onSearch={onSearch}/>
+                {/* <SearchBar onSearch={onSearch}/> */}
                 {/* <input placeholder="Busqueda" />
                 <button>Buscar</button> */}
             </nav>

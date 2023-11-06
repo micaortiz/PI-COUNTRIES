@@ -5,7 +5,8 @@ import { Link, useNavigate} from 'react-router-dom'
 // import { useHistory } from 'react-router'
 import { postActivity } from '../../redux/actions/actions'
 import styles from './Form.module.css'
-
+import stylesInputs from '../styles/Input.module.css'
+// import '../nav/Nav.styles.css'
 const initialForm ={        
     name: '',
     difficulty: '',
@@ -187,109 +188,135 @@ const Form = () => {
       };
     
     return (
-        <form 
-            onSubmit={handlePostActivity} 
-        onReset={handleResetForm}>
-            <h2>Create a new Activity</h2>
+        <div className={styles["form-container"]}>
 
-            <label htmlFor="name" >Activity </label>
+        
+        <form 
+            className={styles["inputs-form"]}
+            onSubmit={handlePostActivity} 
+            onReset={handleResetForm}>
+
+            <h2 className={styles['title-form']} >Create a new Activity</h2>
+
+            {/* ----- ACTIVITY ----- */}
+
+            <label htmlFor="name" className={stylesInputs["label-form"]}>Activity </label>
             <input 
+                    className={stylesInputs["input-form"]}
                     type="name" 
                     name="name" 
                     placeholder="Enter activity name..."
                     // value={userData.email} 
                     onChange={handleInputName} 
             />
-            {errors.name !== '' && <p  className='error-message'>{errors.name}</p>}
-            <br />
+            {errors.name !== '' && <p className={styles["error-form"]}>{errors.name}</p>}
 
-            <label>Difficulty </label>
-            <select onChange={handleSelectDifficulty} placeholder="Select Difficulty">
-                <option value="0">Select an option...</option>
-                <option value="1">Beginner</option>
-                <option value="2">Amateur</option>
-                <option value="3">Normal</option>
-                <option value="4">Professional</option>
-                <option value="5">Expert</option>
-            </select>
-            {errors.difficulty !== '' && <p  className='error-message'>{errors.difficulty}</p>}
-            <br />
-           
-            <label>Duration </label>
-            <input 
-                    type="number" 
-                    name="duration" 
-                    placeholder="Enter duration in hours..."
-                    // value={userData.email} 
-                    onChange={handleInputDuration}
-                    step={1}
-                    min={0} 
-                    // max={12}
-            />
-            {errors.duration !== '' && <p  className='error-message'>{errors.duration}</p>}
+            {/* ----- DIFFICULTY ----- */}
+    
+            <div className={stylesInputs["input-container"]}>
+                <label className={stylesInputs["label-form"]}>Difficulty </label>
+                <select className={stylesInputs["input-form"]} onChange={handleSelectDifficulty} placeholder="Select Difficulty">
+                    <option value="0">Select an option...</option>
+                    <option value="1">Beginner</option>
+                    <option value="2">Amateur</option>
+                    <option value="3">Normal</option>
+                    <option value="4">Professional</option>
+                    <option value="5">Expert</option>
+                </select>
+           </div>
 
-            <br />
+            {errors.difficulty !== '' && <p  className={styles["error-form"]}>{errors.difficulty}</p>}
+            
+            {/* ----- DURATION ----- */}
 
-            <label>Season </label>
-            <select onChange={handleSelectSeason} placeholder="Select Season">
+           <div className={stylesInputs["input-container"]}>
+            
+                <label className={stylesInputs["label-form"]}>Duration </label>
+                <input 
+                        className={stylesInputs["input-form"]}
+                        type="number" 
+                        name="duration" 
+                        placeholder="Enter duration in hours..."
+                        // value={userData.email} 
+                        onChange={handleInputDuration}
+                        step={1}
+                        min={0} 
+                        // max={12}
+                />
+           </div>
+
+            {errors.duration !== '' && <p  className={styles["error-form"]}>{errors.duration}</p>}
+
+            {/* ----- SEASON ----- */}
+            
+            <div className={stylesInputs["input-container"]}>
+            <label className={stylesInputs["label-form"]}>Season </label>
+            <select  className={stylesInputs["input-form"]} onChange={handleSelectSeason} placeholder="Select Season">
                 <option value="Season">Select an option...</option>
                 <option value="Summer">Summer</option>
                 <option value="Autumn">Autumn</option>
                 <option value="Winter">Winter</option>
                 <option value="Spring">Spring</option>
             </select>
-            {errors.season !== '' && <p  className='error-message'>{errors.season}</p>}
+            </div>
+
+            {errors.season !== '' && <p  className={styles["error-form"]}>{errors.season}</p>}
     
-            <br />
+            {/* ----- COUNTRY ----- */}
+        
+            <div className={stylesInputs["input-container"]}> 
 
-            <label>Country </label>
+                <label className={stylesInputs["label-form"]}>Country </label>
 
-            <select 
-            onChange={handleSelectCountries} 
-            > 
-            {/* // Establece el valor seleccionado del campo de selección> */}
-                <option value="">Select countries...</option>
-                {
-                        allCountries?.map((ctry)=>(
+                <select 
+                className={stylesInputs["input-form"]}
+                onChange={handleSelectCountries} 
+                > 
+                {/* // Establece el valor seleccionado del campo de selección> */}
+                    <option value="">Select countries...</option>
+                    {
+                            allCountries?.map((ctry)=>(
+                                
+                                <option
                             
-                            <option
-                         
-                                id={ctry.id}
-                                value={ctry.id} 
-                                key={ctry.id} 
-                                name={ctry.name} >{ctry.name}</option>
-                            ))
-                        
+                                    id={ctry.id}
+                                    value={ctry.id} 
+                                    key={ctry.id} 
+                                    name={ctry.name} >{ctry.name}</option>
+                                ))
+                            
 
-                }
-            
-            </select> 
-            {errors.countries !== '' && <p  className='error-message'>{errors.countries}</p>}
+                    }
+                
+                </select>
+            </div>
+            {errors.countries !== '' && <p className={styles["error-form"]}>{errors.countries}</p>}
 
-            <br />
+          
 
-            {/* muestro los paises seleccionados */}
+            {/* ----- Muestro los paises seleccionados-- */}
 
             {/* <p>Selected countries</p> */}
             {selectCountries?.map(({ id, name, flags }) => {
                     return (
-                        <div key={id} >
-                             <button onClick={() => handleDeleteCountries(id)}>❌</button>
+                        <div key={id} className={styles["container-bandera"]} >
+                             <button onClick={() => handleDeleteCountries(id)}>X</button>
                             {/* <button ><img onClick={() => handleDeleteCountries(id)}title='delete' />X</button> */}
                             {/* <NavLink  to={`/countries/${id}`}> */}
                                 {/* <button onClick={()=> handleDelete(id)}>X</button> */}
 
-                                <img  src={flags} alt={name} />
+                                <img  className={styles.bandera} src={flags} alt={name} />
                                 {/* <h2 >{name}</h2> */}
                             {/* </NavLink> */}
                         </div>
                     )
                 })}
 
-            <div >
-                <button type='reset'>RESET</button>
+            <div  className={styles["btns-form"]} >
+                <button className={styles["button-secondary-dark"]} type='reset'>RESET</button>
                
                 <button 
+                    className={styles["button-primary-dark"]}
                     type="submit" 
                     // si los campos estan vacios el btn se desactiva
                     disabled={!activityData.name|| !activityData.difficulty || !activityData.duration || !activityData.season || activityData.countries.length === 0}
@@ -302,6 +329,8 @@ const Form = () => {
                 
             </div>
         </form>
+        </div>
+
     );
 }
 
