@@ -9,12 +9,13 @@
   color: rgba(255, 255, 255, 0.87);
   /* background-color: #242424; */
   /* background-image: url(./assets/landingPage.png); */
-  background-size: cover;
+  /* background-size: cover; */
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   /* object-fit: cover; */
-
+  /* max-width: 1480px; */
+  /* background-size: 100% 100%; */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

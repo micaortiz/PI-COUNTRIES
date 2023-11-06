@@ -1,8 +1,33 @@
+.container{
+    /* max-width: 1480px; */
+    margin:0;
+    overflow: hidden; 
+    /* //Esto ocultará la barra de desplazamiento vertical */
+    /* padding: 0 0; */
+    background-image: url('../../assets/mountains_2.png');
+    background-size: cover;
+    background-attachment: fixed;
+    /* object-fit: contain; */
+    /* overflow: hidden; */
+    /* height: 44.3%; */
+    width: 100vw;
+
+
+
+    /* background-size: 100% 100%; Ajusta la imagen para cubrir completamente el contenedor */
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
 
 .form-container {
     width: 500px;
-    margin: 3rem auto;
-    background-color: rgba(255, 255, 255, 0.397);
+    height: 800px;
+    margin: 5rem auto;
+    background-color: rgba(255, 255, 255, 0.507);
     border: none;
     border-radius: 20px;
     padding: 1.5rem;

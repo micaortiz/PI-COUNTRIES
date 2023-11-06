@@ -188,6 +188,9 @@ const Form = () => {
       };
     
     return (
+        <div className={styles.container}>
+
+        
         <div className={styles["form-container"]}>
 
         
@@ -330,7 +333,7 @@ const Form = () => {
             </div>
         </form>
         </div>
-
+        </div>
     );
 }
 

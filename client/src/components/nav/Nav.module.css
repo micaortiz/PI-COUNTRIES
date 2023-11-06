@@ -58,6 +58,8 @@ body{
 .textCreate{
     text-decoration: none;
     border-radius: none;
+    padding-top: 45px;
+    padding-left: 20px;
 }
 
 .btn{
@@ -70,8 +72,8 @@ body{
     font-size: 20px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 550;
-    margin: 2rem;
-    padding: 3px;
+    margin: 2rem 5rem 3rem 1rem;
+    padding: 65px 10px 20px 0px ;
     /* margin: 0.3rem; */
     /* text-align: justify; */
     display: flex;

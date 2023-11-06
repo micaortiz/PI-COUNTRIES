@@ -4,11 +4,12 @@ import styles from "./LandingPage.module.css"
 const LandingPage = ()=>{
     
     return(
-        <div className={styles.container}>
+        <div className={styles['container-landing']}>
+            <div className={styles['container']}>
 
-            <h1>EXPLORE THE WORLD</h1>
+            <h1 className={styles['title']}>EXPLORE THE WORLD</h1>
 
-            <p> Explore the countries of the world and plan your tourist activities</p>
+            <h4 className={styles['sub-title']}> Explore the countries of the world and plan your tourist activities</h4>
 
             <Link to='/countries'>
                 <button className={styles.cta}>
@@ -17,6 +18,7 @@ const LandingPage = ()=>{
                     </span>
                     </button>
             </Link>
+            </div>
 
         </div>
     )

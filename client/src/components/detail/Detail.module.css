@@ -2,30 +2,13 @@
     color: #ffffff;
     font-size: 30px;
     text-transform: uppercase;
-    /* margin: 20px; */
+    margin: 80px;
 }
 
 h4{
     text-align: center;
     align-items: center;
 }
-
-/* h4{ */
-    /* padding-bottom: 0px; */
-/* } */
-/* 
-
-.cardDetailContent{
-    width: 60%;
-    background-color: #aca2d778;
-    border-radius: 2rem;
-    padding: 3.4rem;
-    gap: .5rem;
-    margin: 2rem auto;
-    box-shadow: 7px 3px 10px rgba(47, 79, 79, 0.61);
-    /* display: grid; */
-    /* grid-template-columns: 30% 1fr; */
-    /* grid-template-rows: 90px 300px 1fr; */ 
 
 .container{
     width: 100%;
@@ -112,5 +95,5 @@ img{
     gap: 0.5rem;
     margin: 1rem;
     /* box-shadow: 7px 3px 10px var(--box-shadow-color); */
-  }
+}
   
