@@ -13,8 +13,7 @@ const Home = () => {
     const dispatch = useDispatch()
     const allCountries = useSelector((state) => state.allCountries)
     const filteredCountries = useSelector((state) => state.filteredCountries)
-    const countryCopy = useSelector((state) => state.countryCopy)
-
+    
     // pagina actual -> al momento que se carguen sea la pag uno
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -22,26 +21,13 @@ const Home = () => {
     /* ------------------------ FILTERS AND ORDERS ------------------------ */
 
 
-    const allActivity =  useSelector((state) => state.allActivity)
-
-
+    // const allActivity =  useSelector((state) => state.allActivity)
 
     // const filteredCountries = useSelector((state) => state.filteredCountries)
 
-    const activities = useSelector((state) => state.activities)
+    // const activities = useSelector((state) => state.activities)
     const [aux, setAux] = useState(false)
 
-
-    // let filtroActivity = allActivity.filter(c => {
-    //     if(c.activities[0] !== undefined){ 
-    //         return c.activities
-    //     }})
-
-    // let arrayActivity = filtroActivity.map(c => c.activities[0]['name'])
-
-    // let arrayActivity1 = arrayActivity.filter((item,index)=>{
-    //     return arrayActivity.indexOf(item) === index;
-    //   })
 
     const handleOrderName = (event)=>{
         dispatch(orderCountry(event))
@@ -60,18 +46,10 @@ const Home = () => {
 
     const handleFilterByContinent = (event)=>{
         dispatch(filterContinent(event))
-        aux ? setAux(false) : 
+        // aux ? setAux(false) : 
         setAux(true);
         // setCurrentPage(1)
 
-    }
-
-    const handleFilterByActivity = (event) =>{
-        dispatch(filterActivity(event))
-        setCurrentPage(1)
-
-        aux ? setAux(false) : 
-        setAux(true);
     }
 
     /*  --------------------------------------  */
@@ -84,20 +62,9 @@ const Home = () => {
 
     }
 
-
-
-
     return (
         <div className="home" >
-            {/* <div> */}
-
-            {/* <Nav/> */}
-            {/* verificar si dps el search esta bien o va dentro de nav  */}
-            {/* <h2 className="home-title">Countries</h2> */}
-            {/* {
-                allCountries.slice(firstIndex, lastIndex)
-            } */}
-
+   
             <SearchBar 
                 setCurrentPage={setCurrentPage}
                 onSearch={handleSearchByName}
@@ -107,30 +74,16 @@ const Home = () => {
                 orderCountry={handleOrderName}
                 orderPopulations = {handleOrderPopulations}
                 filterByContinent = {handleFilterByContinent}
-                filterByActivity = {handleFilterByActivity}
+                // filterByActivity = {handleFilterByActivity}
                 // setCurrentPage={setCurrentPage}
+                // handleFilterAct = {handleFilter}
             />
             <Cards 
                 allCountries = {
                 filteredCountries?.length > 0 ? filteredCountries : allCountries}
                 currentPage = {currentPage}
                 setCurrentPage = {setCurrentPage}
-                // firstIndex = {firstIndex}
-                // lastIndex = {lastIndex}
-                // , 
-                // activities={country.Activities}
-                /> 
-
-        {/* </div> */}
-            {/* <Pagination 
-                                // countriesPerPage={countriesPerPage} 
-                currentPage={currentPage} 
-                setCurrentPage={setCurrentPage}
-                                // setCountriesPerPage={setCountriesPerPage} 
-                elementsPerPage={elementsPerPage}
-                totalNumCountries={totalNumCountries}
-            /> */}
-
+            /> 
 
         </div>
     );

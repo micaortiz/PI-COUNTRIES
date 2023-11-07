@@ -53,7 +53,6 @@ const Form = () => {
         setActivityData({
 
             ...activityData,
-
             difficulty: event.target.value
         })
     }
@@ -61,8 +60,7 @@ const Form = () => {
     const handleInputDuration = (event)=>{
         setActivityData({
   
-            ...activityData,
-           
+            ...activityData,  
             duration: event.target.value
         })
     }
@@ -71,15 +69,15 @@ const Form = () => {
         setActivityData({
            
             ...activityData,
-          
             season: event.target.value
         })
     }
+   
 
-    // agregar paises 
+    // add countries 
     const handleSelectCountries = (event) =>{
-        // si el pais ya esta seleccionado
         const countryExists = selectCountries.find((country)=> country.id === event.target.value)
+        // si el pais ya esta seleccionado
         if(countryExists){
             return alert('Country already selected')
         }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCountries, getCountryByName } from "../../redux/actions/actions";
+import { clean, getAllCountries, getCountryByName } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styles from "./SearchBar.module.css";
@@ -22,15 +22,15 @@ const SearchBar = ({setCurrentPage}) => {
         //     onSearch(newName)
         // }
         
-        const handleChange = (event) =>{
-        event.preventDefault()
+    const handleChange = (event) =>{
+        // event.preventDefault()
         setName(event.target.value)
     }
 
     const handleSumit = (event) => {
         event.preventDefault()
         dispatch(getCountryByName(name))
-        setName('')
+        // setName('')
         // setInput(1)
         // setPag(1)
     }
@@ -54,9 +54,9 @@ const SearchBar = ({setCurrentPage}) => {
     //     // }
     // }
 
-    // const handleReset = ()=>{
-    //     dispatch(getAllCountries())
-    // }
+    const handleReset = ()=>{
+        dispatch(clean())
+    }
     // // useEffect(() => {
     //     console.log(countryName); // Verifica si countryName se actualiza
     //   }, [countryName]);
@@ -65,18 +65,22 @@ const SearchBar = ({setCurrentPage}) => {
         <form className={styles.searcher}>
             <input className={styles["input-form"]}type="text" onChange={handleChange} value={name} placeholder="Search Country..." />
 
-            <button className={styles["btn"]} onClick={onSearch}  >
+            {/* <button className={styles["btn"]} onClick={onSearch}  >
+                <span>    
+                    SEARCH
+                </span>
+            </button> */}
+
+            <button className={styles["btn"]} onClick={handleSumit}  >
                 <span>    
                     SEARCH
                 </span>
             </button>
 
 
-
-
-            {/* <button onClick={handleReset}>
+            <button onClick={handleReset}>
                 <span>RESET</span>
-            </button> */}
+            </button>
 {/* 
             {
                 countryName?.map((country)=>{

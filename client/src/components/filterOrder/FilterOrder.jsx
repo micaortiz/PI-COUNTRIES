@@ -1,45 +1,29 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { clean, filterContinent, getActivities, orderCountry, orderPopulations } from "../../redux/actions/actions";
+import { clean, filterContinent, getActivities, orderCountry, orderPopulations, filterActivity } from "../../redux/actions/actions";
 import styles from "../searchBar/SearchBar.module.css"
 import inputStyles from "../styles/Input.module.css";
 
-const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,filterByActivity ,setCurrentPage}) => {
+const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,
+    // filterByActivity ,
+    setCurrentPage, handleFilterAct}) => {
 
     const filteredCountries = useSelector((state) => state.filteredCountries)
     const allActivity =  useSelector((state) => state.allActivity)
 
-    // const activities = useSelector((state)=> state.activities)
+    /* ------------ */
+    const allActivities = useSelector((state)=> state.activities);
+    /* ------------ */
+
+   
     const activities = useSelector((state)=> state.activityCounty)
     const dispatch = useDispatch()
 
-    const [actualFilters, setActualFilters] = useState(
-        // {
-        // activity:''
-
-        // }
-        'ALL'
-    )
-
-    // useEffect(() => {
-    //     // dispatch(clean())
-    //     dispatch(getActivities(activities))
-    //     // dispatch(getActivities()) // obtengo las actividades que ya estan creadas
-    //   }, [activities])
 
       
     const handleFilter = (event) =>{
        filterByContinent(event.target.value)
     }
-
-    // const handleXFilter = (event) => {
-    //     const selectedValue = event.target.value;
-        
-    //     if (selectedValue !== selectedContinent) {
-    //       setSelectedContinent(selectedValue); // Actualiza el valor seleccionado
-    //       dispatch(filterByContinent(selectedValue)); // Despacha la acción con el nuevo filtro
-    //     }
-    // }
 
 
     const handleOrder = (event) =>{
@@ -53,9 +37,6 @@ const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,filterB
 
     }
 
-    // useEffect = (()=>{
-    //     dispatch(filterContinent())
-    // },[])
 
     const handleResetFilters = () => {
         dispatch(clean());
@@ -63,47 +44,35 @@ const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,filterB
       }
 
     
-    const handleActivitySelect = (event) =>{
-        // actualFilters = event.target.value
-        // setActualFilters((state)=>{
-        //     return {
-        //         ...state,
-        //         activity: event.target.value
-        //     }
-        // })
+    // const handleFilterByActivity = (event) =>{
+    //     // actualFilters = event.target.value
+    //     // setActualFilters((state)=>{
+    //     //     return {
+    //     //         ...state,
+    //     //         activity: event.target.value
+    //     //     }
+    //     // })
 
-        filterByActivity(event.target.value)
-        // const actualFilters = event.target.value
-        // setActualFilters(actualFilters)
-    } 
+    //     // filterByActivity(event.target.value)
+    //     // const actualFilters = event.target.value
+    //     // setActualFilters(actualFilters)
 
-    // const activityOptions = Array.from(
-    //     new Set(
-    //       Array.isArray(activities)
-    //         ? activities.flatMap((country) =>
-    //             country.Activities.map((activity) => activity.name)
-    //           )
-    //         : []
-    //     )
-    //   );
+    //     /* ------- */
+
+    //     // event.preventDefault();
+    //     // dispatch(filterActivity(event.target.value));
+    //     // setCurrentPage(1)
+    //     /* ---------- */
+    //     filterByActivity(event)
+    // } 
+
+    const handleFilterActivity = (event) => {
+        event.preventDefault();
+        // setActivityFilter(event.target.value)
+        dispatch(filterActivity(event.target.value))
+      }
 
 
-//     const countriesWithSelectedActivity = filteredCountries.filter((country) =>
-//     country.Activities.some((activity) => activity.name === actualFilters )
-//   );
-  
-
-    let filtroActivity = allActivity?.filter(c => {
-        if(c.Activities[0] !== undefined){ 
-            return c.Activities
-        }
-    })
-
-    let arrayActivity = filtroActivity?.map(c => c.Activities[0].name)
-
-    let arrayActivity1 = arrayActivity?.filter((item,index)=>{
-    return arrayActivity.indexOf(item) === index;
-    })
 
     return ( 
         <div className={styles.all}>
@@ -118,6 +87,7 @@ const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,filterB
                 <option value="DESC">Z-A</option>
             </select>
             <br />
+        
 
             {/* ordenar por poblacion */}
             <label htmlFor="" className={styles["titles"]}>Populations </label>
@@ -149,21 +119,31 @@ const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,filterB
             {/* filtrar por actividad */}
             <label htmlFor="" className={styles["titles"]}>Activities </label>
 
-
-            <select className={styles["filters-ca"]} onChange={handleActivitySelect}>
+            {/* <select className={styles["filters-ca"]} onChange={ handleFilterByActivity}> */}
+            <select className={styles["filters-ca"]} onChange={ handleFilterActivity}>
 
             {/* Options for activity filter */}
-            {/* <option value="ALL">All</option>
-            {activities?.map((activity) => {
+            <option value="ALL">All</option>
+
+            {allActivities && allActivities.map((activity) => {
+                  return (
+                    <option value={activity.name}   >{activity.name}</option>
+                  )
+                })}
+
+           
+
+
+            {/* {activities?.map((activity) => {
               return (
                 <option key={activity.id} value={activity.name}>
                   {activity.name}
                 </option>
               );
             })}  */}
-                <option value="ALL" hidden>
+                {/* <option value="ALL" hidden>
                     ALL
-                </option>
+                </option> */}
 
                  {/* <option value="ALL">ALL</option> */}
                     
@@ -178,29 +158,18 @@ const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,filterB
                         <li key={country.id}>{country.name}</li>
                     ))} */}
 
-                    {arrayActivity1?.map(item => {
+                    {/* {arrayActivity1?.map((item, index) => {
                         console.log(arrayActivity1);
                         return(
-                            <option value={item} key={Math.random()}>{item}</option> 
+                            <option value={item} key={index}>{item}</option> 
                             )
                         })
-                    }
+                    } */}
 
 
 
           </select>
-
-          <select  className={styles["filters-ca"]} onChange={handleActivitySelect}> 
-                    <option >ACTIVIDAD</option>
-                    {arrayActivity1?.map(item => {
-                        return(
-                            <option value={item} key={Math.random()}>{item}</option> 
-                            )
-                        })
-                    }
-                </select>
-
-
+          {/* <button  type="submit" onClick={handleFilterAct}>Apply</button> */}
 
             <br />
             {/* clean - NO FUNCIONA */}

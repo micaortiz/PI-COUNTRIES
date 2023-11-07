@@ -65,22 +65,26 @@ export const clean = () =>{
 }
 
 
-// ok----- NO FUNCIONA
+// ok
 export const getCountryByName = (name) => {
     return async (dispatch) => {
         try {
         const response = await axios.get(`${URL_BASE}/countries?name=${name}`)
         // http://localhost:3001/countries/name?name=argent
         console.log('Data');
-        console.log(response.data.country);
-        return dispatch({
+        console.log(response.data);
+        // return 
+        dispatch({
             type: GET_COUNTRY_BY_NAME,
-            payload: response.data.country,
+            payload: response.data,
         });
-    
+        if (response.data.length === 0) {
+            alert('Countries name not found', 
+            {});
+        }
         } catch (error) {
-            // throw Error(error.message) 
-            alert('Countries name not found') 
+            throw Error(error.message) 
+            // alert('Countries name not found') 
         }
     }
 };
@@ -111,16 +115,6 @@ export const getCountryByName = (name) => {
 //         }
 //     } 
 // }
-
-
-
-
-
-
-
-
-
-
 
 // ok
 export const postActivity = (activityData) =>{
@@ -167,23 +161,32 @@ export const filterContinent = (continents)=>{
 }
 
 //? el filter es por name o por difficulty 
+export const filterActivity = (activitiy)=>{
+    console.log('Estoy en el filter activitiy de actions');
+    console.log(activitiy);
+    return {
+        type: FILTER_ACTIVITY,
+        payload:activitiy
+    }
+    // console.log(payload)
+}
+
+
 // export const filterActivity = (activity)=>{
 //     console.log('Estoy en el filter activitiy de actions');
 //     return {
 //         type: FILTER_ACTIVITY,
-//         payload: activity
+//         payload:activity
 //     }
 // }
 
-
-export const filterActivity = (payload)=>{
-    console.log('Estoy en el filter activitiy de actions');
-    return {
-        type: FILTER_ACTIVITY,
-        payload
-    }
-}
-
+// export const filterActivity = (id)=>{
+//     console.log('Estoy en el filter activitiy de actions');
+//     return {
+//         type: FILTER_ACTIVITY,
+//         payload:id
+//     }
+// }
 
 
 

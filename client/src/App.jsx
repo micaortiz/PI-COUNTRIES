@@ -22,8 +22,8 @@ function App() {
   useEffect(() => {
     // dispatch(clean())
     dispatch(getAllCountries())
-    // dispatch(getActivities()) // obtengo las actividades que ya estan creadas
-  }, [])
+    dispatch(getActivities()) // obtengo las actividades que ya estan creadas
+  }, [dispatch])
 // }, [dispatch])
 
 //   useEffect(() => {

@@ -8,9 +8,12 @@ body{
     /* background-image: linear-gradient(to bottom, #a16ab6, #87539c, #6d3c83, #54266b, #3c1053); */
 /* 
     background-image: linear-gradient(to bottom, #6a7fb6, #5c649f, #504987, #462e6e, #3c1053); */
-    /* background-image: linear-gradient(to top, #6a7fb6, #5c649f, #504987, #4e2e81, #63188b); */
+    background-image: linear-gradient(to top, #6a7fb6, #5c649f, #504987, #4e2e81, #63188b);
     /* background-color: #6a298d; */
     background-color: #571c87;
+    /* width: -3rem; */
+    /* height: 2rem; */
+
 
 
     
@@ -28,4 +31,10 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* background-image: linear-gradient(to top, #6a7fb6, #5c649f, #504987, #4e2e81, #63188b); */
+    background-attachment: fixed;
+    /* background-repeat: repeat x; */
+    /* background-size: contain; */
+       /* width: -3rem;  */
+    /* height: 2rem; */
 }
