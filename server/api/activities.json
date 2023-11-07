@@ -1,0 +1,44 @@
+{
+    "activities": [
+      {
+        
+        "name": "Hiking",
+        "difficulty": 3,
+        "duration": 4,
+        "season": "Autumn",
+        "countries": ["COL", "PER", "ARG"]
+      },
+      {
+        
+        "name": "Camping",
+        "difficulty": 2,
+        "duration": 3,
+        "season": "Spring",
+        "countries": ["GRC", "DEU", "BEL"]
+      },
+      {
+        
+        "name": "Snowboarding",
+        "difficulty": 5,
+        "duration": 2,
+        "season": "Winter",
+        "countries": ["CAN", "ARG", "CHE", "JPN"]
+      },
+      {
+        
+        "name": "Surfing",
+        "difficulty": 3,
+        "duration": 2,
+        "season": "Summer",
+        "countries": ["AUS", "CRI"]
+      },
+      {
+        
+        "name": "Swimming",
+        "difficulty": 1,
+        "duration": 1,
+        "season": "Summer",
+        "countries": ["KOR", "ESP"]
+      }
+    ]
+  }

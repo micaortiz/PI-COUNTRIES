@@ -4,7 +4,14 @@ const { Country, Activity } = require('../db.js')
 const getAllCountries = async(req, res)=>{
     try {
         const countries = await Country.findAll({
-            include: {model: Activity}
+            attributes: ['id', 'name', 'flags', 'continents',"capital","subregion" ,"area","population"],
+            include: {
+                model: Activity,
+                attributes: ["name", "difficulty", "duration", "season"],
+                through: {
+                    attributes: []
+                }
+            }
         })
         
         if(!countries){

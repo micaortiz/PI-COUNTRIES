@@ -4,10 +4,22 @@ const { Country, Activity } = require('../db.js')
 
 // -  Obtiene un arreglo de objetos, donde cada objeto es una actividad turística.
 
+// actividades que tienen asociadas paises 
 const getAllActivities = async(req, res) =>{
     try {
         const activities = await Activity.findAll(
-            // { include: {model: Country}}
+            { 
+                include: {
+                    model: Country,
+                    attributes: ["id", "name", "flags", "continents", 
+                    "capital","subregion", "area", "population"],
+                    through: {
+                        attributes: [],
+                    },
+
+                }
+            
+            } 
         )
 
         if(activities.length>0){
