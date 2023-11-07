@@ -68,6 +68,7 @@ const Detail = () => {
                 
             </div>
             <div className={styles['activity-container']} >
+                {/* <h4 >There are no activities for this country yet!</h4> */}
                         
              {countryDetail.Activities && countryDetail.Activities.length > 0 ? (
                 // Si hay actividades asociadas al país, muestra las actividades

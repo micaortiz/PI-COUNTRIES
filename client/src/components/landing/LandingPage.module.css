@@ -1,5 +1,5 @@
 body {
-    margin: 0;
+    margin: 0 ;
     padding: 0;
 
 }
@@ -11,19 +11,51 @@ body {
     /* padding: 0 0; */
     background-image: url('../../assets/mountains_2.png');
     background-size: cover;
+    background-repeat: no-repeat;
+
     /* object-fit: contain; */
     /* overflow: hidden; */
-    /* height: 44.3%; */
+    height: 100vh;
     width: 100vw;
+    /* width: -20vw; */
+    /* min-height: 100vh; */
+    /* background-position-x: center;
+    background-position-y: center;
+    flex-direction: column; */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    background-attachment: fixed;
+    /* height: 100vh; */
 }
+
+/* .container-landing {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-image: url('../../assets/mountains_2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: auto;
+    min-height: 100vh;
+    background-position-x: center;
+    background-position-y: center;
+
+    width: 1000px;
+  padding-left: 200px;
+  padding-right: 200px;
+  
+  } */
+
+
+
 
 .container{
     text-align: center;
-    margin: 100px;
+    margin: 60px;
+    
+    /* margin: 100px; */
     
     /* background-image: url('../../assets/background.jpg'); */
     /* object-fit: cover; */

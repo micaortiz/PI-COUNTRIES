@@ -45,8 +45,8 @@ function App() {
   return (
     <div>
           {/* {location.pathname !== "/" && <Nav onSearch={onSearch} logout={logout} />} */}
-          {location.pathname !== "/" && 
-          <Nav onSearch={onSearch}/>} 
+          {location.pathname !== "/" && location.pathname !== "/activities"  && 
+          <Nav/>} 
       {/* <h1>Characters</h1> */}
       {}
       {/* <Nav/> */}

@@ -1,12 +1,14 @@
-.logo{
+.logo img{
     /* background-image: url("./Framelogo.png"); */
     /* height: 2.5rem; */
-    height: 40px;
-    /* padding: 1rem; */
-    /* margin: .09rem; */
+    height: 55px;
+    padding: 10rem;
+    margin: 200px 200px;
     border: none;
     border-radius: 0%;
     cursor: pointer;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 /* .logo img {
@@ -50,6 +52,7 @@ body{
     /* background-color: #3c096c; */
     display: flex;
     justify-content: flex-end;
+    /* justify-content: center; */
     align-items: center;
     /* height: 65px; */
     /* padding: 5px 10%; */
@@ -60,7 +63,39 @@ body{
     border-radius: none;
     padding-top: 45px;
     padding-left: 20px;
+    padding-top: 0px;
+  margin-bottom: 150px;
 }
+
+.textCreate-logo .btn{
+    text-decoration: none;
+    border-radius: none;
+    padding-top: 45px;
+    padding-left: 20px;
+    align-items: flex-start;
+    justify-self: start;
+    /* color: #53b4d4; */
+    font-weight: 900;
+    color: black;
+
+    font-size: 30px;
+    /* font-weight: 800; */
+}
+.textCreate-logo .btn span{
+    /* color: black; */
+    color: #70d4f5;
+    font-weight: 1000;
+
+
+}
+/* nav .textCreate-logo button{
+    display: flex;
+  flex-direction: row-reverse;
+  align-content: center;
+  justify-content: left;
+  
+
+} */
 
 .btn{
     cursor: pointer;
@@ -85,6 +120,11 @@ body{
     word-spacing: 0.5rem;
     /* border-bottom: 1px solid transparent; */
     /* transition: border .2s ease; */
+
+    margin-top: 0px;
+  padding-top: 12px;
+  padding-bottom: 100px;
+
 }
 
 .container .textCreate .btn:hover{
@@ -96,11 +136,13 @@ body{
     color: #1fa2ce;
 }
 
-/* .search-box{
+.search-box{
     border: none;
     outline: none;
     padding: 10px;
     width: 150px;
     line-height: 30px;
     margin-bottom: 10px;
-} */
+    margin-top: 0px;
+    padding-top: 0px;
+}

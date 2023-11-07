@@ -6,6 +6,7 @@ import { Link, useNavigate} from 'react-router-dom'
 import { postActivity } from '../../redux/actions/actions'
 import styles from './Form.module.css'
 import stylesInputs from '../styles/Input.module.css'
+import stylesNav from "../nav/Nav.module.css"
 // import '../nav/Nav.styles.css'
 const initialForm ={        
     name: '',
@@ -188,14 +189,20 @@ const Form = () => {
     return (
         <div className={styles.container}>
 
-        
+            {/* <div className={styles["form-container-btn"]}> */}
+
+            {/* </div> */}
         <div className={styles["form-container"]}>
 
+            <Link  to='/countries' className={styles['textCreate']} >
+                <button  className={styles['btn']}>BACK</button>
+            </Link> 
         
         <form 
             className={styles["inputs-form"]}
             onSubmit={handlePostActivity} 
             onReset={handleResetForm}>
+
 
             <h2 className={styles['title-form']} >Create a new Activity</h2>
 

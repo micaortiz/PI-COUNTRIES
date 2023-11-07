@@ -31,6 +31,7 @@ h4{
   
   .searcher {
     grid-area: searcher;
+
   }
 
 .input-form {
@@ -39,7 +40,10 @@ h4{
     height: 30px;
     width: 400px;
     border-radius: 12px;
-    margin: 85px 0;
+    /* margin: 85px 0; */
+    /* margin-bottom: 50 0; */
+    margin-top: 0px;
+  margin-bottom: 71px;
     background-color: #a9d6e5;
     border: none;
     accent-color: #5a189a;
@@ -105,13 +109,13 @@ h4{
 
   }
   
-  .btn-search {
+  /* .btn-search {
     color: transparent;
     width: 40px;
     background: var(--dark-color) url(../assets/images/lupa.svg) no-repeat 98%
       center;
     background-size: 35px;
-  }
+  } */
   
   .input-search {
     width: 250px;
