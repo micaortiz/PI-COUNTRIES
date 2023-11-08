@@ -215,26 +215,26 @@ Se debe desarrollar una aplicación utilizando **React** y **Redux** que conteng
 
 **📍 LANDING PAGE |** deberás crear una página de inicio o bienvenida con:
 
--  Alguna imagen de fondo representativa al proyecto.
--  Botón para ingresar a la **`home page`**.
+- ✅ Alguna imagen de fondo representativa al proyecto.
+- ✅  Botón para ingresar a la **`home page`**.
 
 <br />
 
 **📍 HOME PAGE |** la página principal de tu SPA debe contener:
 
 -  SearchBar: un input de búsqueda para encontrar países por nombre.
--  Sector en el que se vea un listado de cards con los países. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta **`GET /countries`** y deberá mostrar su:
+- ✅ Sector en el que se vea un listado de cards con los países. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta **`GET /countries`** y deberá mostrar su: 
    -  Imagen de la bandera.
    -  Nombre.
    -  Continente.
--  Cuando se le hace click a una Card deberá redirigir al detalle de ese país específico.
--  Botones/Opciones para **filtrar** por continente y por tipo de actividad turística.
--  Botones/Opciones para **ordenar** tanto ascendentemente como descendentemente los países por orden alfabético y por cantidad de población.
--  Paginado: el listado de países se hará por partes. Tu SPA debe contar con un paginado que muestre un total de 10 países por página.
+- ✅  Cuando se le hace click a una Card deberá redirigir al detalle de ese país específico.
+- ✅ Botones/Opciones para **filtrar** por continente y por tipo de actividad turística.
+- ✅ Botones/Opciones para **ordenar** tanto ascendentemente como descendentemente los países por orden alfabético y por cantidad de población.
+- ✅ Paginado: el listado de países se hará por partes. Tu SPA debe contar con un paginado que muestre un total de 10 países por página.
 
 <br />
 
-**📍 DETAIL PAGE |** en esta vista se deberá mostrar toda la información específica de un país:
+**📍✅ DETAIL PAGE |** en esta vista se deberá mostrar toda la información específica de un país:
 
 -  ID (Código de tres letras).
 -  Nombre.
@@ -247,9 +247,9 @@ Se debe desarrollar una aplicación utilizando **React** y **Redux** que conteng
 
 <br />
 
-**📍 FORM PAGE |**: en esta vista se encontrará el formulario para crear una actividad turística.
+**📍✅ FORM PAGE |**: en esta vista se encontrará el formulario para crear una actividad turística.
 
-Este formulario debe ser **controlado completamente con JavaScritp**. No se pueden utilizar validaciones HTML, ni utilizar librerías especiales para esto. Debe contar con los siguientes campos:
+✅ Este formulario debe ser **controlado completamente con JavaScritp**. No se pueden utilizar validaciones HTML, ni utilizar librerías especiales para esto. Debe contar con los siguientes campos:
 
 -  Nombre.
 -  Dificultad.
@@ -258,7 +258,7 @@ Este formulario debe ser **controlado completamente con JavaScritp**. No se pued
 -  Posibilidad de seleccionar/agregar varios países en simultáneo.
 -  Botón para crear la actividad turística.
 
-> [**IMPORANTE**]: es requisito que el formulario de creación esté validado sólo con JavaScript. Puedes agregar las validaciones que consideres. Por ejemplo: que el nombre de la actividad no pueda contener números, o que la duración no pueda exceder determinado valor, etc.
+> ✅ [**IMPORANTE**]: es requisito que el formulario de creación esté validado sólo con JavaScript. Puedes agregar las validaciones que consideres. Por ejemplo: que el nombre de la actividad no pueda contener números, o que la duración no pueda exceder determinado valor, etc. 
 
 <br />
 

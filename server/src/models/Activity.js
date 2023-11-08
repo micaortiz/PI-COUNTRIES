@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
         allowNull: false
     },
     difficulty:{
-      type: DataTypes.ENUM('1','2','3','4','5'),
+      type: DataTypes.ENUM('1','2','3','4','5'), //limitar opciones
       allowNull: false,
 
     },
@@ -36,3 +36,17 @@ module.exports = (sequelize) => {
   { timestamps: false }
   );
 };
+
+
+
+
+/* ----------------------------------------------------------------------- */
+/* -------------------- NOTAS --------------------  */
+/* 
+* -- ENUM -- 
+se utiliza para limitar las opciones de valores en una columna a un 
+conjunto específico y predefinido de opciones, lo que ayuda a garantizar 
+la consistencia y calidad de los datos en una base de datos.
+
+
+*/

@@ -1,23 +1,10 @@
 const { Country, Activity } = require('../db.js')
 
-// GET | /countries/:idPais**
-// -  Esta ruta obtiene el detalle de un país específico. Es decir que devuelve un objeto con la información pedida en el detalle de un país.
-// -  El país es recibido por parámetro (ID de tres letras del país).
-// -  Tiene que incluir los datos de las actividades turísticas asociadas a este país.
-
+// Esta ruta obtiene el detalle de un país específico. 
 const getCountryById = async (req, res) =>{
     try {
         const { id } = req.params
-        
-        // const country = await Country.findOne({
-        //     where: { idPais: idPais },
-        
-            //  incluye las act asociadas al pais filtrado
-        //     include: Activity,
-        //   });
-
-        //? VER CUAL FUNCIONA MEJOR ENTRE ESAS 2 
-
+  
         const country = await Country.findByPk( id.toUpperCase(),{
             // incluye las act asociadas al pais filtrado
             include: {model: Activity},
@@ -42,3 +29,31 @@ const getCountryById = async (req, res) =>{
 module.exports={
     getCountryById
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------- */
+/* -------------------- NOTAS --------------------  */
+/* 
+1. Funcion asincrona que tiene dos parametros require y respose.
+2. Se extrae el id de la solicitud
+3. Utilizando el metodo findByPk, busca un registro por su clave primaria. 
+    3.1 Primero se convierte el id a mayusculas y luego se busca al pais 
+    
+4. Se incluye al modelo Actividad ya que al momento de ver el detalle de un
+pais tambien se pueda ver su actividad asociada
+5. Si se encontro el pais, rta 200 
+
+
+
+*/

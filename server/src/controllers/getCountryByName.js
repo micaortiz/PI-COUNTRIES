@@ -1,17 +1,13 @@
 const { Country, Activity } = require('../db.js')
 const { Op } = require('sequelize') 
 
-// GET | /countries/name?="..."**
 
-// -  Esta ruta debe obtener todos aquellos países que coinciden con el nombre recibido por query. (No es necesario que sea una coincidencia exacta).
-// -  Debe poder buscarlo independientemente de mayúsculas o minúsculas.
-// -  Si no existe el país, debe mostrar un mensaje adecuado.
-
+// obtener todos aquellos países que coinciden con el nombre recibido por query. 
 const getCountryByName = async (req, res) => {
     try {
       const { name } = req.query;
-      console.log(name);
-  
+
+
       // Consulta a la DB para buscar países cuyos nombres contengan la cadena especificada 
       const country = await Country.findAll({
         where: {
@@ -19,27 +15,64 @@ const getCountryByName = async (req, res) => {
             [Op.iLike]: `%${name}%`,
           },
         },
-        // Incluimos las actividades relacionadas a los países.
+
         include: {
           model: Activity,
           through: { attributes: [] },
         },
       });
   
-      // Respondemos con un código de status 200 y enviamos los países encontrados en formato JSON.
-      
         if(country){
             return res.status(200).json(country)
         }
         
         return res.status(400).send('Country not found')
 
-    //   res.status(200).json(country);
+ 
     } catch (error) {
-      res.status(500).json({ error: error.message });
-      console.log(error.message);
+      return res.status(500).send(error.message);
+
     }
   };
+
+
+
+module.exports = {
+    getCountryByName
+}
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------- */
+/* -------------------- NOTAS --------------------  */
+/* 
+  1. Extrae el nombre recibido por query
+  2. Utilizando el metodo 'findAll' para buscar a todos los registros que coincidan
+  dentro de la tabla Country. 
+  3. Busqueda que contenga la cadena name
+  4. Utilizo el operador 'iLike' que realiza una busqueda insensible a mayus y minus 
+  5. through: { attributes: [] } No incluye metodos adicionales entre Country y Activity 
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -84,8 +117,3 @@ const getCountryByName = async (req, res) => {
 //         return res.status(500).send(error.message)
 //     }
 // }
-
-module.exports = {
-    getCountryByName
-}
-

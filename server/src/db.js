@@ -1,7 +1,5 @@
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
-// const CountryModel = require('./models/Country');
-// const ActivityModel = require('./models/Activity')
 
 // leer el contenido del directorio
 const fs = require('fs');
@@ -41,7 +39,6 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // se guarda en models 
 const { Country, Activity } = sequelize.models;
-// const { Country, Activity, User } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
@@ -51,11 +48,29 @@ Country.belongsToMany(Activity, {through: 'country_activity', timestamps: false 
 
 Activity.belongsToMany(Country, {through: 'country_activity', timestamps: false })
 
-/* Relacion 1:N */
-// User.hasMany(Activity)
-// Activity.belongsTo(User)
-
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
 };
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------- */
+/* -------------------- NOTAS --------------------  */
+
+/* 
+  Timestamps: Sequelize agrega automáticamente los campos createdAt y updatedAt a cada modelo y este metodo las ignora
+1. Relacion N:M
+  El A.belongsToMany(B, { through: 'C' }) asociación significa que existe una relación de Muchos a Muchos 
+  entre A y B, usando la tabla C 
+
+2. Cuando haces esto, puedes acceder a los modelos Country y Activity directamente sin tener que escribir 
+  sequelize.models.Country o sequelize.models.Activity cada vez que necesites interactuar con ellos en tu código.
+
+3. La tabla intermedia va a tener la primary key de country como de activity
+  
+*/

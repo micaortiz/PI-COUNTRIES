@@ -13,29 +13,47 @@ const router = Router();
 
 /* routes */
 
-// verificar si va en controller o en handler
-router.get('/countries', (req, res)=>{ // ok
+router.get('/countries', (req, res)=>{ 
     const { name } = req.query;
     if(!name){
         getAllCountries(req, res)
-        // http://localhost:3001/countries
     }else{
         getCountryByName(req, res)
-        // http://localhost:3001/countries?name=argenti
     }
 })
 
-router.get('/countries/:id', getCountryById) // ok
-// http://localhost:3001/countries/ARG
+router.get('/countries/:id', getCountryById) 
 
-router.post('/activities', postActivity) // ok
-router.get('/activities', getAllActivities) // ok
-// http://localhost:3001/activities
+router.post('/activities', postActivity) 
+router.get('/activities', getAllActivities) 
 
-
-router.put('/activities/:id', updateActivity) // ok
-
-// router.get('/countries', getAllCountries)
-// router.get('/countries/name', getCountryByName)
+router.put('/activities/:id', updateActivity) 
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------- */
+/* -------------------- NOTAS --------------------  */
+/* 
+ 1. Se importa a los controladores para manejar las rutas
+ 2. Se crea una instancia de router, para definir las rutas
+ 3. Se extrae el name de query
+ 4. Se verifica si se proporciona el name, si es asi se llama al controlador 
+ getCountryByName para obtener a los paises por nombre si no se proporciona 
+ se llama al controlador getAllCountries para obtener a todos los paises
+ 5. Ruta tipo get que llama al controlador para obtener los detalles de cada
+ pais
+ 
+*/

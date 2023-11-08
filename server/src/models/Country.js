@@ -6,13 +6,12 @@ module.exports = (sequelize) => {
 
   sequelize.define('Country', {
     id:{ //codigo de tres letras
-      type:DataTypes.STRING(3), //almacena hasta 3 caracteres de longitud
+      type: DataTypes.STRING(3), //almacena hasta 3 caracteres de longitud
       allowNull: false,
       primaryKey: true,
-      // autoIncrement: true
 
     },
-    name: { //name.oficial 
+    name: { 
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -21,12 +20,12 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    continents:{ // []
-      type: DataTypes.ARRAY(DataTypes.STRING),
+    continents:{ 
+      type: DataTypes.ARRAY(DataTypes.STRING), // se almacena en un array y cada elemento es un string 
       allowNull: false
 
     },
-    capital:{ //capital[]
+    capital:{ 
       type: DataTypes.STRING,
       allowNull: false
 
@@ -47,3 +46,5 @@ module.exports = (sequelize) => {
   { timestamps: false }
   );
 };
+
+
