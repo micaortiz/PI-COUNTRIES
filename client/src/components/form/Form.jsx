@@ -8,6 +8,8 @@ import styles from './Form.module.css'
 import stylesInputs from '../styles/Input.module.css'
 import stylesNav from "../nav/Nav.module.css"
 // import '../nav/Nav.styles.css'
+
+
 const initialForm ={        
     name: '',
     difficulty: '',
@@ -15,35 +17,24 @@ const initialForm ={
     season:'',
     countries:[] // almacena el id
 }
+
 const Form = () => {    
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const dispatch = useDispatch()
  
     // estado local
-    const [activityData, setActivityData] = useState( 
-        initialForm
-        // {
-        // name: '',
-        // difficulty: '',
-        // duration: '',
-        // season:'',
-        // countries:[] // almacena el id
-    // }
-    )
+    const [activityData, setActivityData] = useState( initialForm )
     const [selectCountries, setSelectCountries] = useState([])
+    const [errors, setErrors] = useState({})
 
 
     // estado global
-    // const country = useSelector((state)=> state.countryCopy)
     const allCountries = useSelector((state)=> state.allCountries)
-    // const createActivity = useSelector((state)=> state.activities)
 
-    const [errors, setErrors] = useState({})
 
     // Maneja cambios en el input
     const handleInputName = (event)=>{
         setActivityData({
-            // copia del estado para no perder las props
             ...activityData,
             // Sobrescribe la prop 'name' con el valor ingresado en el input
             [event.target.name]: event.target.value
@@ -74,11 +65,9 @@ const Form = () => {
         })
     }
    
-
-    // add countries 
     const handleSelectCountries = (event) =>{
         const countryExists = selectCountries.find((country)=> country.id === event.target.value)
-        // si el pais ya esta seleccionado
+
         if(countryExists){
             return alert('Country already selected')
         }
@@ -97,82 +86,34 @@ const Form = () => {
     }
 
 
-    //? NO FUNCIONA 
-    // const handleDeleteCountries = (id) => {
-    //     const countryToDelete = selectCountries.find((country) => country.id === id);
-        
-    //     if (countryToDelete) {
-    //         // Realiza la acción que deseas con el país que se va a eliminar.
-    //         // En este caso, simplemente muestra una alerta.
-    //         alert(`Se ha quitado ${countryToDelete.name}`);
-            
-    //         // Filtra la lista de países seleccionados 'selectCountries' para excluir el país con el ID proporcionado.
-    //         const updatedSelectCountries = selectCountries.filter((country) => country.id !== id);
-    
-    //         // Actualiza el estado 'selectCountries' con la nueva lista de países seleccionados.
-    //         setSelectCountries(updatedSelectCountries);
-    
-    //         // Crea una nueva lista de IDs de países basada en la lista actualizada de 'selectCountries'.
-    //         const newCountries = updatedSelectCountries.map((country) => country.id);
-    
-    //         // Actualiza el estado 'activityData' con los nuevos IDs de países seleccionados.
-    //         setActivityData({
-    //             ...activityData,
-    //             countries: newCountries
-    //         });
-    //     }
-    // }
-
-    
     const handlePostActivity = (event) => {
         event.preventDefault()
-        // if(Object.entries(errors).length === 0 ){
 
-            dispatch(postActivity(activityData))
+        dispatch(postActivity(activityData))
                             
-            alert('¡Activity has been created successfully!')
-            // await handleResetForm()
-             // Reiniciar los campos del formulario
-            // setActivityData(initialForm);
-    
-            // Limpiar la lista de países seleccionados
-            // setSelectCountries([])
-            // setActivityData(initialForm)
-            // setSelectCountries([])
-                            
-            // navigate("/countries")
-            
-        // }
-            //  window.location.reload()
-             window.location.href = '/countries'
-
-
+        alert('¡Activity has been created successfully!')
+        window.location.href = '/countries'
     }
 
     useEffect(()=>{
         
-        // para que no muestre los errores al comienzo
-        if(activityData.name!==''|| activityData.difficulty!=='' || activityData.duration!== '' || activityData.season!=='' || !activityData.countries ){
-            // se hace la validacion cada vez que se actualiza el estado 
+        // para que no muestre los errores al comienzo y se hace la validacion cada vez que se actualiza el estado
+        if(activityData.name!==''|| activityData.difficulty!=='' || activityData.duration!== '' || 
+        activityData.season!=='' || !activityData.countries ){
+
             setErrors(validation(activityData));
         }
 
     },[activityData])
 
     
-    // para que no recargue la pag cuando se de click en el button
-    // const handleSubmit = (event) =>{
-    //     event.preventDefault();
-    //     // login(userData);
-    // }
 
       // Función para manejar la eliminación de un país seleccionado
     const handleDeleteCountries = (id) => {
-        // Filtra los países seleccionados para excluir el que tiene el ID dado
+      
         const updatedSelectCountries = selectCountries.filter((country) => country.id !== id);
         setSelectCountries(updatedSelectCountries);
 
-        // Actualiza el estado 'activityData' con la nueva lista de IDs de países
         const newCountries = updatedSelectCountries?.map((country) => country.id);
         setActivityData({
         ...activityData,
@@ -182,16 +123,13 @@ const Form = () => {
     };
 
     const handleResetForm = () => {
-        setActivityData(initialForm); // Restablece los campos de entrada
-        setSelectCountries([]); // Borra los países seleccionados
+        setActivityData(initialForm);
+        setSelectCountries([]); 
       };
     
     return (
         <div className={styles.container}>
 
-            {/* <div className={styles["form-container-btn"]}> */}
-
-            {/* </div> */}
         <div className={styles["form-container"]}>
 
             <Link  to='/countries' className={styles['textCreate']} >
@@ -214,7 +152,6 @@ const Form = () => {
                     type="name" 
                     name="name" 
                     placeholder="Enter activity name..."
-                    // value={userData.email} 
                     onChange={handleInputName} 
             />
             {errors.name !== '' && <p className={styles["error-form"]}>{errors.name}</p>}
@@ -245,7 +182,6 @@ const Form = () => {
                         type="number" 
                         name="duration" 
                         placeholder="Enter duration in hours..."
-                        // value={userData.email} 
                         onChange={handleInputDuration}
                         step={1}
                         min={0} 
@@ -280,17 +216,16 @@ const Form = () => {
                 className={stylesInputs["input-form"]}
                 onChange={handleSelectCountries} 
                 > 
-                {/* // Establece el valor seleccionado del campo de selección> */}
                     <option value="">Select countries...</option>
                     {
                             allCountries?.map((ctry)=>(
-                                
+
                                 <option
-                            
                                     id={ctry.id}
                                     value={ctry.id} 
                                     key={ctry.id} 
-                                    name={ctry.name} >{ctry.name}</option>
+                                    name={ctry.name} > {ctry.name} </option>
+
                                 ))
                             
 
@@ -304,18 +239,13 @@ const Form = () => {
 
             {/* ----- Muestro los paises seleccionados-- */}
 
-            {/* <p>Selected countries</p> */}
             {selectCountries?.map(({ id, name, flags }) => {
                     return (
                         <div key={id} className={styles["container-bandera"]} >
                              <button onClick={() => handleDeleteCountries(id)}>X</button>
-                            {/* <button ><img onClick={() => handleDeleteCountries(id)}title='delete' />X</button> */}
-                            {/* <NavLink  to={`/countries/${id}`}> */}
-                                {/* <button onClick={()=> handleDelete(id)}>X</button> */}
 
                                 <img  className={styles.bandera} src={flags} alt={name} />
-                                {/* <h2 >{name}</h2> */}
-                            {/* </NavLink> */}
+
                         </div>
                     )
                 })}
@@ -327,12 +257,10 @@ const Form = () => {
                     className={styles["button-primary-dark"]}
                     type="submit" 
                     // si los campos estan vacios el btn se desactiva
-                    disabled={!activityData.name|| !activityData.difficulty || !activityData.duration || !activityData.season || activityData.countries.length === 0}
-                    // {errors.name || errors.difficulty || errors.season || errors.countries} 
-                    // onClick={() => window.location.reload()}
-                    // onClick={handlePostActivity}
-                    >
-                        CREATE
+                    disabled={!activityData.name|| !activityData.difficulty || !activityData.duration || !activityData.season || activityData.countries.length === 0}>
+
+                    CREATE
+
                 </button>
                 
             </div>
@@ -343,3 +271,72 @@ const Form = () => {
 }
 
 export default Form
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------- */
+/* -------------------- NOTAS --------------------  */
+
+/* 
+ 1. Defino el estado inicial de mi form 
+ 2. Se definen varias funciones para manejar cambios en los campos del form
+    2.1 handleInputName, handleSelectDifficulty, handleInputDuration, y 
+    handleSelectSeason actualizan el estado local activityData con los valores 
+    ingresados por el usuario en los campos del formulario.
+
+    2.2 handleSelectCountries: maneja la seleccion de paises. Actualiza 
+    activityData con el ID del país seleccionado y agrega información 
+    adicional del país a la lista. Y agrega el país seleccionado a la lista 
+    de 'selectCountries'
+
+    2.3 handlePostActivity maneja el envío del formulario. Si no hay errores
+    en la validacion se utiliza el dispatch para crear el formulario y redirecciona
+    al usuario al home 
+
+    2.4 useEffect Los errores se almacenan en el estado errors, lo que permite 
+    mostrar mensajes de error al usuario si es necesario.
+
+    2.5 handleResetForm se utiliza para restablecer los campos del formulario y 
+    borrar la lista de países seleccionados cuando sea necesario.
+
+    2.6 handleDeleteCountries permite eliminar un país de la lista de países 
+    seleccionados. Filtra los países seleccionados para excluir el que tiene el ID dado
+    Actualiza el estado 'activityData' con la nueva lista de IDs de países
+
+    Filtra la lista de selectCountries y actualiza activityData 
+    con los nuevos ID de países seleccionados.
+    
+ 3. () => handleDeleteCountries(id) es una función anónima que se ejecutará 
+ cuando se produzca un clic en el botón. Esta función toma el ID del país (id) 
+ como argumento y lo pasa como parámetro a handleDeleteCountries.
+
+
+
+ Sobrescribe la prop 'name' con el valor ingresado en el input
+ [event.target.name]: event.target.value
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+

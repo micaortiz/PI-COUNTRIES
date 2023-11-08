@@ -1,15 +1,13 @@
-import Card from '../card/Card'
-import { useSelector } from 'react-redux';
-import styles from './Cards.module.css'
-import Pagination from '../pagination/Pagination';
 import { useState } from 'react';
+import Card from '../card/Card'
+import Pagination from '../pagination/Pagination';
+import styles from './Cards.module.css'
 
 
 const Cards = ({allCountries, currentPage, setCurrentPage}) => {
-    // const  allCountries  = useSelector((state) => state.allCountries)
 
     if (!allCountries || !Array.isArray(allCountries)) {
-        return <div>No se han encontrado países.</div>;
+        return <div>Countries not found</div>;
     }
 
     // total de elementos a renderizar por pag
@@ -17,39 +15,19 @@ const Cards = ({allCountries, currentPage, setCurrentPage}) => {
 
     // countries por pagina (10)
     const [countriesPerPage,setCountriesPerPage] = useState(10)
-    
-    // pagina actual -> al momento que se carguen sea la pag uno
-    // const [currentPage, setCurrentPage] = useState(1) // empieza a partir de uno
-
-    // console.log(allCountries);
-    // const numCountries = allCountries ? allCountries.length : 0;
-    // console.log(numCountries);
-
+  
     // cant total de paises
     const totalNumCountries = allCountries.length
-    // console.log(totalNumCountries);
-    
-    // .slice(0,5) -> retorna un arreglo con 5 posiciciones
 
     // definicion de indices
-                        //1           // 6 
-    const lastIndex = currentPage * countriesPerPage // = 6
-    const firstIndex = lastIndex - countriesPerPage // = 0
-                         // 6        // 6
+    const lastIndex = currentPage * countriesPerPage
+    const firstIndex = lastIndex - countriesPerPage 
     
 
 
     return (
         <div>
-            {/* <Pagination 
-
-                currentPage={currentPage} 
-                setCurrentPage={setCurrentPage}
-   
-                elementsPerPage={elementsPerPage}
-                totalNumCountries={totalNumCountries}
-            /> */}
-
+     
             {/* // renderiza a cada Card */}
             <div className={styles.container}>
                 {
@@ -59,9 +37,7 @@ const Cards = ({allCountries, currentPage, setCurrentPage}) => {
                             key = {id}
                             id = {id}
                             name = {name}
-                            // name = {name?.common}
                             flags = {flags}
-                            // flags = {flags?.png}
                             continents={continents}
                             capital = {capital}
                             subregion = {subregion}
@@ -69,14 +45,11 @@ const Cards = ({allCountries, currentPage, setCurrentPage}) => {
                             population = {population}
                             />
                         }).slice(firstIndex,lastIndex)
-                        // .slice(0,10) regresa los primeros 10 elementos en un nuevo arreglo
                     }
             </div>
             <Pagination 
-                                // countriesPerPage={countriesPerPage} 
                 currentPage={currentPage} 
                 setCurrentPage={setCurrentPage}
-                                // setCountriesPerPage={setCountriesPerPage} 
                 elementsPerPage={elementsPerPage}
                 totalNumCountries={totalNumCountries}
             />
@@ -85,3 +58,50 @@ const Cards = ({allCountries, currentPage, setCurrentPage}) => {
 }
 
 export default Cards;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------- */
+/* -------------------- NOTAS --------------------  */
+/* 
+ 1. Renderiza una lista de componentes Card
+ 2. Se utiliza el metodo map() para recorrer cada objeto de pais en el arreglo
+ 3. Para cada objeto pais se retorna un componente Card y se le pasan las 
+ propiedades correspondientes como key, id, name, flags, continents, capital, 
+ subregion, area, y population. Estas propiedades se utilizan para personalizar 
+ cada tarjeta de país con la información específica del país.  
+ 4. Se aplica el metodo slice para mostrar solo un subconjunto de las card
+
+    ------------------------------------------
+ PAGINATION:
+ 1. Se verifica que allCountries sea una matriz valida 
+ 2. Se utiliza el estado local countriesPerPage para rastrear la cantidad de 
+ países por página, que se establece inicialmente en 10.
+ 3. Se definen los índices firstIndex y lastIndex para determinar 
+ cuáles países se mostrarán en la página actual.
+ 
+ >> CARDS renderiza al componente PAGINATION 
+
+
+
+
+
+
+
+
+*/

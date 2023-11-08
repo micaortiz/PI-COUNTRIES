@@ -72,7 +72,6 @@ const reducer = (state = initialSte, action) => {
         case CREATE_ACTIVITY:
             return{
                 // copia solamente de activities
-                // ...state.activities,
                 ...state,
                 // activities: action.payload
             }
@@ -86,7 +85,7 @@ const reducer = (state = initialSte, action) => {
     // ------------------- FILTRADOS -------------------
 
         case FILTER_CONTINENTS:
-            // en caso de alguna modificacion en el arrlego original es mejor obtener una copia 
+
             let filterByContinents = state.allCountries
             if(action.payload !== 'ALL'){
                 filterByContinents  = state.allCountries.filter((country) => {
@@ -119,16 +118,16 @@ const reducer = (state = initialSte, action) => {
             const orderCountry = [...state.filteredCountries] 
 
             if(action.payload === 'ASC'){
-                console.log('Ordenando paises ascendente');
+            
                 orderCountry.sort((a, b) => a.name.localeCompare(b.name))
             }else if(action.payload === 'DESC'){
-                console.log('Ordenando paises descendente');
+        
                 orderCountry.sort((a, b) => b.name.localeCompare(a.name))
             }
 
             return{
                 ...state,
-                // debo poner al pais filtrado antes y dps ordenarlo
+
                 filteredCountries : orderCountry
             }
 
@@ -136,10 +135,9 @@ const reducer = (state = initialSte, action) => {
             const orderPopulations = [...state.filteredCountries] 
 
             if(action.payload === 'ASC_POP'){
-                console.log('Ordenando poblacion ascendente');
                 orderPopulations.sort((a, b)=> a.population - b.population )
             }else if (action.payload === 'DESC_POP'){
-                console.log('Ordenando poblacion descendente');
+              
                 orderPopulations.sort((a, b)=> b.population - a.population )
                 
             }
@@ -157,6 +155,69 @@ const reducer = (state = initialSte, action) => {
 }
 
 export default reducer
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------- */
+/* -------------------- NOTAS --------------------  */
+/* 
+ 1. initialState se utiliza para definir la estructura inicial del estado
+
+ - filter_Continents: defino un referencia directa de la lista de los paises.
+ Cualquier cambio se refleja directamente en la funete original
+  Filtra la lista de países (state.allCountries) para incluir solo 
+  los países cuyo continente (country.continent) está incluido en la lista 
+  de continentes filtrados (filterByContinents). 
+  El resultado de este filtrado se almacena en la variable filteredCountries
+ 
+  >> Filtra los países por el continente seleccionado.
+
+  - filter_Activity: creo una copia de todos los paises
+    Filtrar los países para que solo se incluyan aquellos que tengan al 
+    menos una actividad cuyo nombre coincida con action.payload.
+
+    Filtra una lista de países según la actividad seleccionada, 
+    asegurando que solo los países con la actividad seleccionada se incluyan en la lista filtrada
+
+
+  [...state.filteredCountries] crea una copia de los datos filtrados. 
+  No altera directamente la fuente de datos original. 
+
+  Default si no coincide con ningun Case se retorna directamente la copia del estado. 
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

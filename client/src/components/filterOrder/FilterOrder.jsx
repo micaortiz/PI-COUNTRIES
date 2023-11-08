@@ -1,88 +1,56 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 import { clean, filterContinent, getActivities, orderCountry, orderPopulations, filterActivity } from "../../redux/actions/actions";
 import styles from "../searchBar/SearchBar.module.css"
 import inputStyles from "../styles/Input.module.css";
 
-const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,
+const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent}) => {
     // filterByActivity ,
-    setCurrentPage, handleFilterAct}) => {
+    // setCurrentPage, handleFilterAct
 
-    const filteredCountries = useSelector((state) => state.filteredCountries)
-    const allActivity =  useSelector((state) => state.allActivity)
 
+    // const filteredCountries = useSelector((state) => state.filteredCountries)
+    // const allActivity =  useSelector((state) => state.allActivity)
+
+    const dispatch = useDispatch()
     /* ------------ */
     const allActivities = useSelector((state)=> state.activities);
     /* ------------ */
-
-   
-    const activities = useSelector((state)=> state.activityCounty)
-    const dispatch = useDispatch()
-
-
+    // const activities = useSelector((state)=> state.activityCounty)
       
     const handleFilter = (event) =>{
        filterByContinent(event.target.value)
     }
 
-
     const handleOrder = (event) =>{
         orderCountry(event.target.value)
-        // setCurrentPage(1)
+        
     }
 
     const handleOrderPopulations = (event) =>{
-        orderPopulations((event.target.value))
-        // setCurrentPage(1)
+        orderPopulations(event.target.value) 
 
     }
 
-
     const handleResetFilters = () => {
         dispatch(clean());
-        // También puedes restablecer la página a 1 si es necesario
-      }
-
-    
-    // const handleFilterByActivity = (event) =>{
-    //     // actualFilters = event.target.value
-    //     // setActualFilters((state)=>{
-    //     //     return {
-    //     //         ...state,
-    //     //         activity: event.target.value
-    //     //     }
-    //     // })
-
-    //     // filterByActivity(event.target.value)
-    //     // const actualFilters = event.target.value
-    //     // setActualFilters(actualFilters)
-
-    //     /* ------- */
-
-    //     // event.preventDefault();
-    //     // dispatch(filterActivity(event.target.value));
-    //     // setCurrentPage(1)
-    //     /* ---------- */
-    //     filterByActivity(event)
-    // } 
+     
+    }
 
     const handleFilterActivity = (event) => {
         event.preventDefault();
-        // setActivityFilter(event.target.value)
+    
         dispatch(filterActivity(event.target.value))
-      }
-
-
+    }
 
     return ( 
         <div className={styles.all}>
-            {/* <h3>Aca van los filtros y ordenamientos</h3> */}
+
             <h4 >Sort by </h4>
             
             {/* ordenar por nombre */}
             <label htmlFor="" className={styles["titles"]} >Name </label>
             <select  className={styles["order-np"]}  name=""  onChange={handleOrder}>
-                {/* <option value="">None</option> */}
+
                 <option value="ASC">A-Z</option>
                 <option value="DESC">Z-A</option>
             </select>
@@ -92,7 +60,7 @@ const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,
             {/* ordenar por poblacion */}
             <label htmlFor="" className={styles["titles"]}>Populations </label>
             <select className={styles["order-np"]}  name="" id="" onChange={handleOrderPopulations}>
-                {/* <option value="">None</option> */}
+
                 <option value="ASC_POP">Ascending</option>
                 <option value="DESC_POP">Descending</option>
             </select>
@@ -122,54 +90,16 @@ const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,
             {/* <select className={styles["filters-ca"]} onChange={ handleFilterByActivity}> */}
             <select className={styles["filters-ca"]} onChange={ handleFilterActivity}>
 
-            {/* Options for activity filter */}
             <option value="ALL">All</option>
 
             {allActivities && allActivities.map((activity) => {
                   return (
-                    <option value={activity.name}   >{activity.name}</option>
+                    <option value={activity.name} > {activity.name} </option>
                   )
                 })}
 
-           
-
-
-            {/* {activities?.map((activity) => {
-              return (
-                <option key={activity.id} value={activity.name}>
-                  {activity.name}
-                </option>
-              );
-            })}  */}
-                {/* <option value="ALL" hidden>
-                    ALL
-                </option> */}
-
-                 {/* <option value="ALL">ALL</option> */}
-                    
-                    {/* {activityOptions.map((activity, index) => (
-                        <option key={index} value={activity}>
-                            {activity}
-                        </option>
-                    ))} */}
-
-
-                    {/* {countriesWithSelectedActivity.map((country) => (
-                        <li key={country.id}>{country.name}</li>
-                    ))} */}
-
-                    {/* {arrayActivity1?.map((item, index) => {
-                        console.log(arrayActivity1);
-                        return(
-                            <option value={item} key={index}>{item}</option> 
-                            )
-                        })
-                    } */}
-
-
-
           </select>
-          {/* <button  type="submit" onClick={handleFilterAct}>Apply</button> */}
+
 
             <br />
             {/* clean - NO FUNCIONA */}
@@ -181,3 +111,46 @@ const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent,
 }
  
 export default FilterOrder;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------- */
+/* -------------------- NOTAS --------------------  */
+/* 
+ - event.target.value  se utiliza para determinar qué opción ha seleccionado 
+ el usuario en un menú desplegable y, en función de esa selección, se 
+ desencadenan acciones específicas, como el filtrado o el ordenamiento de 
+ los datos en la aplicación. (opcion que el usuario elige)
+
+ - event.preventDefault(); se puede usar para cancelar la acción predeterminada 
+ de otros eventos, como eventos de teclado, eventos de mouse y eventos de carga de página.
+
+ - El propósito de onChange es definir qué acción debe llevarse a cabo cuando 
+ el usuario cambia la selección en el elemento
+
+ - Si allActivities tiene datos, se utiliza el método map() para recorrer 
+ el arreglo y generar opciones para cada actividad.
+
+
+
+
+
+
+
+*/

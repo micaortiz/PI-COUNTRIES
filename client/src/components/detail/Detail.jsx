@@ -1,23 +1,17 @@
-// import React from 'react';
-// import axios from "axios"
 import { useParams } from "react-router-dom"
 import {  useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { getCountryById,cleanDetailCountry } from "../../redux/actions/actions"
-
-
-
 import styles from './Detail.module.css'
 
 
-// const URL_BASE = 'http://localhost:3001/countries'
-
 const Detail = () => {
-    // obtiene el id del personaje que se indica en la ruta de app
-    const {id} = useParams()
+    
+    const { id } = useParams()
     const countryDetail = useSelector((state) => state.countryDetail)
-    const activityCountry = useSelector((state)=>state.activityCountry)
+    // const activityCountry = useSelector((state)=>state.activityCountry)
     const dispatch = useDispatch();
+
     
     useEffect(()=>{
         
@@ -25,21 +19,20 @@ const Detail = () => {
         // se desmonta y se limpia el estado
         return () => dispatch(cleanDetailCountry())    
     },[])
-
-    useEffect(()=>{
-
-    },[activityCountry])
+    // probar si funciona con el id dentro del array de dependencias 
     
 
+    // useEffect(()=>{
+
+    // },[activityCountry])
     return (
         <div>
             
             <h1 className={styles.titleDetail}>Country Information</h1>
 
             <div className={styles.container}>
-                <div className={styles.box}>
 
-                {/* <div className={styles.flag}> */}
+                <div className={styles.box}>
 
                     <div className={styles.title}>
 
@@ -47,8 +40,6 @@ const Detail = () => {
                     </div>
 
                     <img src={countryDetail.flags} alt={countryDetail.name} />
-                {/* </div> */}
-            {/* <h3>ID: {countryDetail.id}</h3> */}
                     
                     <div className={styles.info}>
 
@@ -68,7 +59,6 @@ const Detail = () => {
                 
             </div>
             <div className={styles['activity-container']} >
-                {/* <h4 >There are no activities for this country yet!</h4> */}
                         
              {countryDetail.Activities && countryDetail.Activities.length > 0 ? (
                 // Si hay actividades asociadas al país, muestra las actividades
@@ -94,6 +84,65 @@ const Detail = () => {
 }
 
 export default Detail;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------- */
+/* -------------------- NOTAS --------------------  */
+
+/* 
+ 1. Extrae el id de la URL o recibido por params 
+ 2. Este useEffect se utiliza para actualizar el componente y para desmontar el
+ componente y limpiar el estado. Ya que por segundos se ve el detalle del pais anterior 
+ 3. Se utiliza el useSelector para taer informacion del estado global 
+ Para acceder al estado global y obtener los datos relacionados 
+ con el detalle del pais 
+ 4. Muestra el detalle del pais 
+ 5. Se verifica si existen actividades asociadas al pais o si la longitud es mayor
+ que 0 y se muestran.
+ 6. En caso que no hayan actividades asociadas se muestra el msj para indicar
+ que no hay actividades disponibles 
+
+    ----------------------------------------
+ Este componente muestra información detallada sobre un país, incluyendo su 
+ nombre, bandera y datos demográficos, así como las actividades que se pueden 
+ realizar en ese país. La información se muestra de manera condicional, 
+ dependiendo de si existen actividades asociadas al país o no.
+
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*                {
                     countryDetail.Activities?.map((activity) => (

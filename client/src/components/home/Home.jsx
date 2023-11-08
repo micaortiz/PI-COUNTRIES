@@ -1,11 +1,12 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import Cards from "../cards/Cards";
 import FilterOrder from "../filterOrder/FilterOrder";
-import Nav from "../nav/Nav";
 import SearchBar from "../searchBar/SearchBar";
-import { useState } from "react";
+
 import { filterActivity, filterContinent, getCountryByName, orderCountry, orderPopulations } from "../../redux/actions/actions";
-import Pagination from '../pagination/Pagination';
+
 import "./Home.styles.css"
 
 
@@ -20,35 +21,29 @@ const Home = () => {
 
     /* ------------------------ FILTERS AND ORDERS ------------------------ */
 
-
-    // const allActivity =  useSelector((state) => state.allActivity)
-
-    // const filteredCountries = useSelector((state) => state.filteredCountries)
-
-    // const activities = useSelector((state) => state.activities)
     const [aux, setAux] = useState(false)
 
 
     const handleOrderName = (event)=>{
         dispatch(orderCountry(event))
-        // aux ? setAux(false) :
+        
          setAux(true);
-        //  setCurrentPage(1)
+     
     }
 
     const handleOrderPopulations = (event)=>{
         dispatch(orderPopulations(event))
-        // aux ? setAux(false) : 
+
         setAux(true);
-        // setCurrentPage(1)
+        
 
     }
 
     const handleFilterByContinent = (event)=>{
         dispatch(filterContinent(event))
-        // aux ? setAux(false) : 
+
         setAux(true);
-        // setCurrentPage(1)
+    
 
     }
 
@@ -56,7 +51,7 @@ const Home = () => {
 
     const handleSearchByName = (name) =>{
         dispatch(getCountryByName(name))
-        aux ? setAux(false) : 
+        
         setAux(true);
         setCurrentPage(1)
 
@@ -90,3 +85,35 @@ const Home = () => {
 }
 
 export default Home;
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------- */
+/* -------------------- NOTAS --------------------  */
+/* 
+    HOME renderiza a CARDS -> SEARCHBAR -> FILTROS Y ORDER 
+
+    useState = [estado, funcion Que modifica el estado] -> array de dos posiciones
+
+ Cuando se incia el componente aux se inicializa como false, 
+ lo que indica que no se ha realizado ninguna acción especial
+ 
+ setAux se emplea para determinar si se ha realizado alguna acción que 
+ requiera una actualización en la interfaz de usuario, como el filtrado, 
+ el ordenamiento o la búsqueda.
+
+ Event representa el evento que desencadenó la llamada a esta función
+
+ - Cards: si filteredCountries contiene elementos, allCountries se establecerá en filteredCountries.
+está vacío o no tiene elementos, se asigna el valor de allCountries a la propiedad allCountries. 
+En este caso, allCountries conserva su valor original.
+
+*/
