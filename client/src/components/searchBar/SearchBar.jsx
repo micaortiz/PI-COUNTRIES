@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { clean, getAllCountries, getCountryByName } from "../../redux/actions/actions";
@@ -6,10 +6,10 @@ import { clean, getAllCountries, getCountryByName } from "../../redux/actions/ac
 import styles from "./SearchBar.module.css";
 
 // encontrar paises por nombre
-const SearchBar = ({setCurrentPage}) => {
+const SearchBar = () => {
 
     const dispatch = useDispatch()
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     const [name, setName]=useState("")
 

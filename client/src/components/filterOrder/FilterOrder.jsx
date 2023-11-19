@@ -4,12 +4,6 @@ import styles from "../searchBar/SearchBar.module.css"
 import inputStyles from "../styles/Input.module.css";
 
 const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent}) => {
-    // filterByActivity ,
-    // setCurrentPage, handleFilterAct
-
-
-    // const filteredCountries = useSelector((state) => state.filteredCountries)
-    // const allActivity =  useSelector((state) => state.allActivity)
 
     const dispatch = useDispatch()
     /* ------------ */
@@ -87,7 +81,6 @@ const FilterOrder = ({ orderCountry, orderPopulations, filterByContinent}) => {
             {/* filtrar por actividad */}
             <label htmlFor="" className={styles["titles"]}>Activities </label>
 
-            {/* <select className={styles["filters-ca"]} onChange={ handleFilterByActivity}> */}
             <select className={styles["filters-ca"]} onChange={ handleFilterActivity}>
 
             <option value="ALL">All</option>
@@ -133,6 +126,8 @@ export default FilterOrder;
 /* ----------------------------------------------------------------------- */
 /* -------------------- NOTAS --------------------  */
 /* 
+ - Estas funciones llaman cuando se produce un evento on el valor seleccionado 
+ en el elemento que generó el evento (event.target.value
  - event.target.value  se utiliza para determinar qué opción ha seleccionado 
  el usuario en un menú desplegable y, en función de esa selección, se 
  desencadenan acciones específicas, como el filtrado o el ordenamiento de 
@@ -141,7 +136,7 @@ export default FilterOrder;
  - event.preventDefault(); se puede usar para cancelar la acción predeterminada 
  de otros eventos, como eventos de teclado, eventos de mouse y eventos de carga de página.
 
- - El propósito de onChange es definir qué acción debe llevarse a cabo cuando 
+ - onChange es definir qué acción debe llevarse a cabo cuando 
  el usuario cambia la selección en el elemento
 
  - Si allActivities tiene datos, se utiliza el método map() para recorrer 

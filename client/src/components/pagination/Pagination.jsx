@@ -44,7 +44,8 @@ const Pagination = ({totalNumCountries, elementsPerPage, currentPage, setCurrent
               ))
             }
 
-          <button className={styles.btnPage} onClick={onNextPage} disabled={currentPage >= pageNumber.length}> Next </button>
+          <button className={styles.btnPage} onClick={onNextPage} 
+                  disabled={currentPage >= pageNumber.length}> Next </button>
         </div>
     </div>
   );

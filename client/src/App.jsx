@@ -33,7 +33,7 @@ function App() {
         <Route path='/countries' element={<Home/>}/>
         <Route path='/activities' element={<Form/>}/>
         <Route path="/detail/:id" element={<Detail/>} />
-        {/* :id -> es dinamico, es params  */}
+        {/* :id -> es dinamico, por params  */}
       </Routes>
     </div>
   )

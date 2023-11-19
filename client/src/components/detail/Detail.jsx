@@ -18,13 +18,10 @@ const Detail = () => {
         dispatch(getCountryById(id))
         // se desmonta y se limpia el estado
         return () => dispatch(cleanDetailCountry())    
-    },[])
+    },[id])
     // probar si funciona con el id dentro del array de dependencias 
     
-
-    // useEffect(()=>{
-
-    // },[activityCountry])
+    
     return (
         <div>
             

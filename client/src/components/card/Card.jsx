@@ -12,6 +12,7 @@ const Card = ({id, name, continents, flags}) => {
             <div className={styles.cardContent}>
 
             <h2 className={styles.cardTitle}>{name}</h2>
+            
             <p>Continent: {continents}</p>
 
             <Link to={`/detail/${id}`}>

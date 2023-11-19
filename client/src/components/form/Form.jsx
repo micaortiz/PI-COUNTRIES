@@ -2,23 +2,21 @@ import validation from './validationForm'
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch} from 'react-redux';
 import { Link, useNavigate} from 'react-router-dom'
-// import { useHistory } from 'react-router'
 import { postActivity } from '../../redux/actions/actions'
 import styles from './Form.module.css'
 import stylesInputs from '../styles/Input.module.css'
 import stylesNav from "../nav/Nav.module.css"
-// import '../nav/Nav.styles.css'
 
-
-const initialForm ={        
-    name: '',
-    difficulty: '',
-    duration: '',
-    season:'',
-    countries:[] // almacena el id
-}
 
 const Form = () => {    
+
+    const initialForm ={        
+        name: '',
+        difficulty: '',
+        duration: '',
+        season:'',
+        countries:[] // almacena el id
+    }
     // const navigate = useNavigate()
     const dispatch = useDispatch()
  
@@ -185,7 +183,7 @@ const Form = () => {
                         onChange={handleInputDuration}
                         step={1}
                         min={0} 
-                        // max={12}
+                        // max={48}
                 />
            </div>
 
@@ -251,6 +249,7 @@ const Form = () => {
                 })}
 
             <div  className={styles["btns-form"]} >
+                
                 <button className={styles["button-secondary-dark"]} type='reset'>RESET</button>
                
                 <button 

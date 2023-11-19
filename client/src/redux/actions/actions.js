@@ -127,8 +127,7 @@ export const filterContinent = (continents)=>{
 }
 
 export const filterActivity = (activitiy)=>{
-    // console.log('Estoy en el filter activitiy de actions');
-    // console.log(activitiy);
+
     return {
         type: FILTER_ACTIVITY,
         payload:activitiy

@@ -17,11 +17,11 @@ import {
 
 const initialSte = {
     allCountries: [], // almacena a todos los paises
-    countryCopy: {}, // almacenar una copia de los datos originales 
+    countryCopy: {},
     countryDetail: [], //  almacena el detalle de un pais
-    activityCountry: [], // almacena la actividad asociada a un pais
+    activityCountry: [], 
     countryName : [], // almacena el pais filtrado por nombre
-    activities: [], // almacena la actividad creada
+    activities: [], // almacena la actividades
     filteredCountries : [], // almacenar una copia de los datos originales y guarda filtros y ordenamientos 
     allActivities : []
 
@@ -49,6 +49,7 @@ const reducer = (state = initialSte, action) => {
             return  {
                 ...state,
                 countryDetail: action.payload.country,
+                
                 activityCountry: action.payload.Activities
             }
 
@@ -62,7 +63,8 @@ const reducer = (state = initialSte, action) => {
             return{
                 ...state,
                 filteredCountries:[]
-            }    
+            }   
+             
         case GET_COUNTRY_BY_NAME:
             return{
                 ...state,
@@ -71,9 +73,8 @@ const reducer = (state = initialSte, action) => {
         
         case CREATE_ACTIVITY:
             return{
-                // copia solamente de activities
+
                 ...state,
-                // activities: action.payload
             }
         case GET_ALL_ACTIVITIES:
             return {
@@ -114,7 +115,7 @@ const reducer = (state = initialSte, action) => {
 
 
         case ORDER_COUNTRY:
-            // tengo que hacer una copia de los paises filtrados
+            
             const orderCountry = [...state.filteredCountries] 
 
             if(action.payload === 'ASC'){
