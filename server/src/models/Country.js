@@ -41,6 +41,9 @@ module.exports = (sequelize) => {
       allowNull: false
 
 
+    },
+    latlng:{
+      type: DataTypes.ARRAY(DataTypes.FLOAT)
     }
   },
   { timestamps: false }

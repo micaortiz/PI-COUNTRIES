@@ -9,7 +9,7 @@ const { dbConnect } = require("./src/controllers/dbConnect");
 
 // Conexion con la bd 
 conn.sync({ force: true })
-  // un vez que funcione correctamente cambiar a true o a alter:true
+  // un vez que funcione correctamente cambiar a false 
 .then(() => {
   // establecer conexion con la bd
   dbConnect();

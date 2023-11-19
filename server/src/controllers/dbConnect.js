@@ -15,12 +15,14 @@ const dbConnect = async() =>{
                 name: country.name.common,
                 flags: country.flags.png,
                 continents: country.continents,
+
                 // verificar si existe debido que hay algunos paises que no tienen capitales ..
                 // si tiene valor se retorna el primer element, si no tiene valor se asigna 'Information not available' 
                 capital: country.capital ? country.capital[0] : 'Information not available',
                 subregion: country.subregion ? country.subregion : 'Information not available',
                 area: country.area,
-                population: country.population
+                population: country.population,
+                latlng: country.latlng ? country.latlng: 'Information not available' 
             }
         })
         // bulkCreate() es un método de Sequelize que permite crear múltiples registros en una tabla de una sola vez.
@@ -30,7 +32,7 @@ const dbConnect = async() =>{
 
 
     } catch (error) {
-        // console.log(error.message);
+     
         throw Error(error.message)
     }
 
@@ -41,6 +43,8 @@ module.exports = {
 
     dbConnect
 }
+
+
 
 
 
